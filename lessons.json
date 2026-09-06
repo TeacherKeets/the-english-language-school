@@ -1,35 +1,36 @@
 {
   "adults": [
     {
-      "id": "life-2026-09-06",
+      "title": "Daily English Practice",
+      "category": "General English",
       "date": "2026-09-06",
-      "featured": true,
-      "category": "Life",
-      "title": "Navigating Daily Social Interactions",
-      "description": "Learn 3 key vocab words and master real-world conversation flow.",
-      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80",
-      "link": "lessons/life-2026-09-06.html"
+      "description": "Improve your vocabulary and everyday conversational skills.",
+      "image": "https://picsum.photos/400/200?random=1",
+      "link": "adult-lesson-1.html"
     },
     {
-      "id": "history-2026-09-05",
+      "title": "Business Communication",
+      "category": "Professional",
       "date": "2026-09-05",
-      "featured": false,
-      "category": "History",
-      "title": "The Origin of Modern Language",
-      "description": "Explore historical roots while strengthening reading comprehension.",
-      "image": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600&q=80",
-      "link": "lessons/history-2026-09-05.html"
+      "description": "Learn key phrases for workplace emails, meetings, and presentations.",
+      "image": "https://picsum.photos/400/200?random=2",
+      "link": "adult-lesson-2.html"
     }
   ],
   "kids": [
     {
-      "id": "kids-2026-09-06",
-      "date": "2026-09-06",
-      "featured": true,
       "title": "The Curious Little Bear",
+      "date": "2026-09-06",
       "description": "An audio-first story for beginners with fun multiple-choice questions.",
-      "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&q=80",
-      "link": "lessons/kids-2026-09-06.html"
+      "image": "https://picsum.photos/400/200?random=4",
+      "link": "kids-lesson-1.html"
+    },
+    {
+      "title": "The Magic Forest Adventure",
+      "date": "2026-09-05",
+      "description": "Follow along with simple words, interactive sound effects, and games.",
+      "image": "https://picsum.photos/400/200?random=5",
+      "link": "kids-lesson-2.html"
     }
   ]
 }
