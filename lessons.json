@@ -17,6 +17,15 @@
       "title": "The Origin of Modern Language",
       "description": "Explore historical roots while strengthening reading comprehension.",
       "link": "lessons/history-2026-09-05.html"
+    },
+    {
+      "id": "business-2026-09-04",
+      "date": "2026-09-04",
+      "featured": false,
+      "category": "Business",
+      "title": "Mastering Email Tone & Professionalism",
+      "description": "Practice writing formal messages and expressing professional opinions.",
+      "link": "lessons/business-2026-09-04.html"
     }
   ],
   "kids": [
