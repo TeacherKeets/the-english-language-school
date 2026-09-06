@@ -15,6 +15,14 @@
       "description": "Learn key phrases for workplace emails, meetings, and presentations.",
       "image": "https://picsum.photos/400/200?random=2",
       "link": "adult-lesson-2.html"
+    },
+    {
+      "title": "Travel & Directions",
+      "category": "Vocabulary",
+      "date": "2026-09-04",
+      "description": "Essential vocabulary for traveling, ordering food, and asking for directions.",
+      "image": "https://picsum.photos/400/200?random=3",
+      "link": "adult-lesson-3.html"
     }
   ],
   "kids": [
@@ -31,6 +39,13 @@
       "description": "Follow along with simple words, interactive sound effects, and games.",
       "image": "https://picsum.photos/400/200?random=5",
       "link": "kids-lesson-2.html"
+    },
+    {
+      "title": "Sunny Day at the Zoo",
+      "date": "2026-09-04",
+      "description": "Learn animal names and colors in this fun interactive bedtime story.",
+      "image": "https://picsum.photos/400/200?random=6",
+      "link": "kids-lesson-3.html"
     }
   ]
 }
