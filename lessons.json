@@ -30,21 +30,21 @@
       "title": "The Curious Little Bear",
       "date": "2026-09-06",
       "description": "An audio-first story for beginners with fun multiple-choice questions.",
-      "image": "https://picsum.photos/400/200?random=4",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
       "link": "kids-lesson-1.html"
     },
     {
       "title": "The Magic Forest Adventure",
       "date": "2026-09-05",
       "description": "Follow along with simple words, interactive sound effects, and games.",
-      "image": "https://picsum.photos/400/200?random=5",
+      "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
       "link": "kids-lesson-2.html"
     },
     {
       "title": "Sunny Day at the Zoo",
       "date": "2026-09-04",
       "description": "Learn animal names and colors in this fun interactive bedtime story.",
-      "image": "https://picsum.photos/400/200?random=6",
+      "image": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
       "link": "kids-lesson-3.html"
     }
   ]
