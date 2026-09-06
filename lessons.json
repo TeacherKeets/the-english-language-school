@@ -7,6 +7,7 @@
       "category": "Life",
       "title": "Navigating Daily Social Interactions",
       "description": "Learn 3 key vocab words and master real-world conversation flow.",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80",
       "link": "lessons/life-2026-09-06.html"
     },
     {
@@ -16,16 +17,8 @@
       "category": "History",
       "title": "The Origin of Modern Language",
       "description": "Explore historical roots while strengthening reading comprehension.",
+      "image": "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600&q=80",
       "link": "lessons/history-2026-09-05.html"
-    },
-    {
-      "id": "business-2026-09-04",
-      "date": "2026-09-04",
-      "featured": false,
-      "category": "Business",
-      "title": "Mastering Email Tone & Professionalism",
-      "description": "Practice writing formal messages and expressing professional opinions.",
-      "link": "lessons/business-2026-09-04.html"
     }
   ],
   "kids": [
@@ -34,7 +27,8 @@
       "date": "2026-09-06",
       "featured": true,
       "title": "The Curious Little Bear",
-      "description": "An audio-first story for beginners with fun multiple-choice questions (A, B, or C).",
+      "description": "An audio-first story for beginners with fun multiple-choice questions.",
+      "image": "https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=600&q=80",
       "link": "lessons/kids-2026-09-06.html"
     }
   ]
