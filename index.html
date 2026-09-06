@@ -8,13 +8,94 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #f8fafc; color: #0f172a; line-height: 1.6; }
         
+        /* Modern Header & Navigation Bar */
+        .main-header {
+            background-color: #0b192c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 3px solid #ff6500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-btn:hover {
+            background-color: #ff6500;
+            border-color: #ff6500;
+            color: #ffffff;
+        }
+
+        /* Nav Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 100;
+            border: 1px solid #cbd5e1;
+        }
+
+        .dropdown-content a {
+            color: #0f172a;
+            padding: 0.75rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #fff3eb;
+            color: #d94600;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         /* Hero Section */
         .hero { 
             background: linear-gradient(135deg, #0b192c, #1e3e62); 
             color: #fff; 
             text-align: center; 
             padding: 3.5rem 1rem; 
-            border-bottom: 4px solid #ff6500;
         }
         .hero h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
         .hero p { color: #e2e8f0; font-size: 1.1rem; }
@@ -23,14 +104,19 @@
         .section-title { 
             font-size: 1.6rem; 
             color: #0b192c; 
-            margin: 2rem 0 1rem; 
+            margin: 2rem 0 1.2rem; 
             border-bottom: 3px solid #ff6500; 
             display: inline-block; 
             padding-bottom: 0.2rem; 
         }
         
-        /* Grid and Card Layout */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        /* Grid Layout for 3 Cards */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.5rem; 
+        }
+
         .card { 
             background: #fff; 
             border: 1px solid #cbd5e1; 
@@ -61,7 +147,6 @@
             flex-grow: 1;
         }
 
-        /* Orange Category Badges */
         .badge { 
             align-self: flex-start; 
             background-color: #fff3eb; 
@@ -78,7 +163,6 @@
         .card h3 { font-size: 1.2rem; color: #0b192c; margin-bottom: 0.5rem; }
         .card p { font-size: 0.95rem; color: #475569; margin-bottom: 1.2rem; flex-grow: 1; }
         
-        /* Primary Action Buttons */
         .btn { 
             display: block; 
             text-align: center; 
@@ -92,14 +176,14 @@
         }
         .btn:hover { background-color: #e05500; }
 
-        /* Lesson Library List with Small Thumbnails */
+        /* Lesson Library List */
         .library-list { background: #fff; border-radius: 12px; border: 1px solid #cbd5e1; overflow: hidden; margin-top: 1rem; }
         .library-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-bottom: 1px solid #f1f5f9; }
         .library-item:last-child { border-bottom: none; }
         .library-info { display: flex; gap: 1rem; align-items: center; }
         .library-thumb { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; }
         
-        /* Kids Corner */
+        /* Kids Corner Box */
         .kids-box { 
             background: #fff8f0; 
             border: 2px dashed #ff6500; 
@@ -110,21 +194,23 @@
     </style>
 </head>
 <body>
-<!-- TOP NAVIGATION -->
-<header class="main-header">
-  <div class="logo">The English Language School</div>
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <div class="dropdown">
-      <a href="#lessons" class="dropbtn">Lessons ▾</a>
-      <div class="dropdown-content">
-        <a href="#adult-lessons">Adult Lessons</a>
-        <a href="#kids-lessons">Kids Corner</a>
-        <a href="all-lessons.html">All Lessons Library</a>
-      </div>
-    </div>
-  </nav>
-</header>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="main-header">
+      <div class="logo">The English Language School</div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-btn">Home</a>
+        <div class="dropdown">
+          <a href="#featured-adult" class="nav-btn">Lessons ▾</a>
+          <div class="dropdown-content">
+            <a href="#featured-adult">Adult Lessons</a>
+            <a href="#kids-lessons">Kids Corner</a>
+            <a href="#adult-library">Full Library</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
     <section class="hero">
         <h1>The English Language School</h1>
         <p>Daily interactive lessons & full practice library</p>
@@ -132,19 +218,19 @@
 
     <main class="container">
         
-        <!-- Today's Featured Lesson -->
-        <h2 class="section-title">Today's Featured Lesson</h2>
-        <div class="grid" id="featured-adult"></div>
+        <!-- 3 Featured Adult Lessons -->
+        <h2 class="section-title" id="featured-adult">Featured Adult Lessons</h2>
+        <div class="grid" id="adult-grid"></div>
 
-        <!-- Past Lessons Archive -->
-        <h2 class="section-title">Lesson Library (Past Lessons)</h2>
-        <div class="library-list" id="adult-library"></div>
-
-        <!-- Kids Corner -->
-        <div class="kids-box">
-            <h2 class="section-title">🎈 Kids Corner</h2>
-            <div class="grid" id="kids-lessons"></div>
+        <!-- 3 Kids Lessons -->
+        <div class="kids-box" id="kids-lessons">
+            <h2 class="section-title" style="margin-top: 0;">🎈 Kids Corner</h2>
+            <div class="grid" id="kids-grid"></div>
         </div>
+
+        <!-- Full Library List -->
+        <h2 class="section-title" id="adult-library">Lesson Library (Past Lessons)</h2>
+        <div class="library-list" id="library-container"></div>
 
     </main>
 
@@ -154,23 +240,39 @@
                 const response = await fetch('lessons.json');
                 const data = await response.json();
 
-                // 1. Load Today's Featured Adult Lesson
-                const featured = data.adults.find(item => item.featured) || data.adults[0];
-                document.getElementById('featured-adult').innerHTML = `
+                // 1. Load up to 3 Adult Lessons in Grid
+                const adultGrid = document.getElementById('adult-grid');
+                const featuredAdults = data.adults.slice(0, 3);
+                adultGrid.innerHTML = featuredAdults.map(lesson => `
                     <div class="card">
-                        ${featured.image ? `<img src="${featured.image}" alt="${featured.title}" class="card-img">` : ''}
+                        ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
                         <div class="card-content">
-                            <span class="badge">${featured.category}</span>
-                            <div class="date">${featured.date}</div>
-                            <h3>${featured.title}</h3>
-                            <p>${featured.description}</p>
-                            <a href="${featured.link}" class="btn">Start Today's Lesson</a>
+                            <span class="badge">${lesson.category}</span>
+                            <div class="date">${lesson.date}</div>
+                            <h3>${lesson.title}</h3>
+                            <p>${lesson.description}</p>
+                            <a href="${lesson.link}" class="btn">Start Lesson</a>
                         </div>
                     </div>
-                `;
+                `).join('');
 
-                // 2. Load Full Lesson Library
-                const libraryContainer = document.getElementById('adult-library');
+                // 2. Load up to 3 Kids Lessons in Grid
+                const kidsGrid = document.getElementById('kids-grid');
+                const featuredKids = data.kids.slice(0, 3);
+                kidsGrid.innerHTML = featuredKids.map(lesson => `
+                    <div class="card">
+                        ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
+                        <div class="card-content">
+                            <div class="date">${lesson.date}</div>
+                            <h3>${lesson.title}</h3>
+                            <p>${lesson.description}</p>
+                            <a href="${lesson.link}" class="btn">Play Story</a>
+                        </div>
+                    </div>
+                `).join('');
+
+                // 3. Load All Lessons into Library List
+                const libraryContainer = document.getElementById('library-container');
                 libraryContainer.innerHTML = data.adults.map(lesson => `
                     <div class="library-item">
                         <div class="library-info">
@@ -182,19 +284,6 @@
                             </div>
                         </div>
                         <a href="${lesson.link}" class="btn" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">View</a>
-                    </div>
-                `).join('');
-
-                // 3. Load Kids Corner
-                document.getElementById('kids-lessons').innerHTML = data.kids.map(lesson => `
-                    <div class="card">
-                        ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
-                        <div class="card-content">
-                            <div class="date">${lesson.date}</div>
-                            <h3>${lesson.title}</h3>
-                            <p>${lesson.description}</p>
-                            <a href="${lesson.link}" class="btn">Play Story</a>
-                        </div>
                     </div>
                 `).join('');
 
