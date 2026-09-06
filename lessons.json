@@ -1,0 +1,32 @@
+{
+  "adults": [
+    {
+      "id": "life-2026-09-06",
+      "date": "2026-09-06",
+      "featured": true,
+      "category": "Life",
+      "title": "Navigating Daily Social Interactions",
+      "description": "Learn 3 key vocab words and master real-world conversation flow.",
+      "link": "lessons/life-2026-09-06.html"
+    },
+    {
+      "id": "history-2026-09-05",
+      "date": "2026-09-05",
+      "featured": false,
+      "category": "History",
+      "title": "The Origin of Modern Language",
+      "description": "Explore historical roots while strengthening reading comprehension.",
+      "link": "lessons/history-2026-09-05.html"
+    }
+  ],
+  "kids": [
+    {
+      "id": "kids-2026-09-06",
+      "date": "2026-09-06",
+      "featured": true,
+      "title": "The Curious Little Bear",
+      "description": "An audio-first story for beginners with fun multiple-choice questions (A, B, or C).",
+      "link": "lessons/kids-2026-09-06.html"
+    }
+  ]
+}
