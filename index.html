@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The English Language School | Interactive Academy</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        /* BRAND IDENTITY PALETTE (Deep Visa Blue & Energetic Action Orange) */
+        :root {
+            --visa-blue: #0A2540;
+            --action-orange: #FF6B00;
+            --hover-orange: #E05300;
+            --canvas-bg: #F8FAFC;
+            --card-border: #E2E8F0;
+            --slate-text: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--canvas-bg); color: #0f172a; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+        .hidden { display: none !important; }
+        
+        /* Branded Header Navigation */
+        header { background: #ffffff; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--visa-blue); box-shadow: 0 4px 20px rgba(10,37,64,0.03); }
+        .brand-zone { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+        .brand-logo { font-size: 1.6rem; }
+        .brand-title { color: var(--visa-blue); font-weight: 800; font-size: 1.35rem; tracking: -0.03em; text-transform: uppercase; }
+        .brand-title span { color: var(--action-orange); }
+        
+        .header-nav { display: flex; gap: 1rem; align-items: center; }
+        .header-btn { background: #f1f5f9; color: var(--visa-blue); border: 1px solid var(--card-border); padding: 0.65rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+        .header-btn:hover { background: var(--visa-blue); color: #ffffff; }
+        .orange-cta-btn { background: linear-gradient(135deg, var(--action-orange), #FF8533); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 14px rgba(255,107,0,0.25); }
+        .orange-cta-btn:hover { background: var(--hover-orange); transform: translateY(-1px); }
+
+        /* Premium Marketing Hero Header Section */
+        .hero-banner { background: linear-gradient(135deg, var(--visa-blue) 0%, #133B66 100%); color: #ffffff; padding: 4.5rem 2.5rem; text-align: center; border-bottom: 4px solid var(--action-orange); position: relative; overflow: hidden; }
+        .hero-banner h2 { font-size: 2.8rem; font-weight: 800; tracking: -0.04em; max-width: 800px; margin: 0 auto; line-height: 1.2; }
+        .hero-banner h2 span { color: var(--action-orange); }
+        .hero-banner p { color: #94a3b8; font-size: 1.1rem; margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; font-weight: 500; }
+
+        /* Dashboard Feed Containers */
+        .main-workspace { max-width: 1240px; margin: 3rem auto; padding: 0 2rem; }
+        .filter-control-deck { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 1.2rem; border-radius: 24px; border: 1px solid var(--card-border); margin-bottom: 3.5rem; }
+        .toggle-switch-tray { display: flex; background: #f8fafc; padding: 0.4rem; border-radius: 16px; gap: 0.5rem; border: 1px solid #f1f5f9; }
+        .scope-toggle-btn { border: none; padding: 0.75rem 2.25rem; font-size: 0.9rem; font-weight: 700; border-radius: 12px; cursor: pointer; color: #64748b; background: transparent; transition: all 0.2s; }
+        .scope-toggle-btn.active { background: var(--visa-blue); color: #ffffff; box-shadow: 0 4px 12px rgba(10,37,64,0.15); }
+        .indicator-badge { background: #eef2ff; color: var(--visa-blue); font-size: 0.8rem; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 12px; border-left: 4px solid var(--action-orange); }
+
+        /* Magazine Style Cards Grid Layout */
+        .magazine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2.5rem; }
+        .magazine-card { background: #ffffff; border-radius: 28px; border: 1px solid var(--card-border); overflow: hidden; display: flex; flex-direction: column; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; }
+        .magazine-card:hover { transform: translateY(-8px); box-shadow: 0 30px 45px rgba(10,37,64,0.08); border-color: #cbd5e1; }
+        
+        .card-visual-frame { height: 230px; width: 100%; overflow: hidden; position: relative; background: #cbd5e1; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .magazine-card:hover .card-img { transform: scale(1.04); }
+        
+        .badge-tag { position: absolute; top: 1.25rem; left: 1.25rem; color: #ffffff; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; tracking: 0.08em; padding: 0.35rem 0.75rem; border-radius: 8px; z-index: 10; }
+        .badge-free { background: #10b981; }
+        .badge-premium { background: var(--action-orange); }
+        .badge-age { position: absolute; top: 1.25rem; right: 1.25rem; background: var(--visa-blue); color: #ffffff; font-size: 0.65rem; font-weight: 800; padding: 0.35rem 0.75rem; border-radius: 8px; z-index: 10; }
+
+        .card-body-content { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+        .card-main-title { font-size: 1.2rem; font-weight: 800; line-height: 1.4; color: var(--visa-blue); margin-bottom: 0.85rem; }
+        .card-main-excerpt { font-size: 0.85rem; color: #64748b; line-height: 1.6; flex-grow: 1; }
+        .card-action-trigger { margin-top: 1.75rem; width: 100%; background: var(--visa-blue); color: #ffffff; border: none; padding: 0.85rem; font-size: 0.85rem; font-weight: 700; border-radius: 14px; cursor: pointer; text-align: center; font-weight: 800; text-transform: uppercase; tracking: 0.02em; }
+        .magazine-card:hover .card-action-trigger { background: var(--action-orange); box-shadow: 0 4px 14px rgba(255,107,0,0.3); }
+
+        /* Membership Billing Hub Layout Panels */
+        .paywall-panel { max-width: 960px; margin: 4rem auto; padding: 0 2rem; }
+        .paywall-header-deck { text-align: center; margin-bottom: 3.5rem; }
+        .paywall-header-deck h2 { font-size: 2.4rem; font-weight: 800; color: var(--visa-blue); }
+        .paywall-header-deck p { color: #64748b; font-size: 1rem; margin-top: 0.75rem; }
+        
+        .tier-grid-system { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .membership-card { background: #ffffff; border: 1px solid var(--border-gray); border-radius: 28px; padding: 3rem; display: flex; flex-direction: column; }
+        .membership-card.featured { border: 2px solid var(--action-orange); position: relative; box-shadow: 0 25px 50px rgba(255,107,0,0.04); }
+        .featured-banner-tag { position: absolute; top: 0; right: 0; background: var(--action-orange); color: #ffffff; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 0.45rem 1.25rem; border-radius: 0 0 0 16px; }
+        
+        .tier-headline-title { font-size: 1.4rem; font-weight: 800; color: var(--visa-blue); }
+        .price-text-block { margin: 2rem 0; }
+        .price-huge { font-size: 3rem; font-weight: 800; color: var(--visa-blue); }
+        
+        .perk-bullets-list { list-style: none; border-top: 1px solid #f1f5f9; padding-top: 2rem; margin-bottom: 2.5rem; flex: 1; }
+        .perk-bullets-list li { font-size: 0.9rem; color: #475569; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+        .perk-bullets-list li::before { content: "✓"; color: #10b981; font-weight: 900; }
+        
+        .checkout-pricing-btn { width: 100%; border: none; padding: 1rem; font-size: 0.95rem; font-weight: 700; border-radius: 16px; cursor: pointer; text-align: center; }
+        .btn-checkout-standard { background: var(--visa-blue); color: #ffffff; }
+        .btn-checkout-featured { background: var(--action-orange); color: #ffffff; }
+
+        /* The Live Lesson Active Workspace Panels */
+        .workspace-frame { max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }
+        .workspace-progress-ribbon { background: var(--visa-blue); color: white; padding: 1.25rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-left: 5px solid var(--action-orange); }
+        .workspace-central-card { background: white; border: 1px solid var(--card-border); border-radius: 28px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        
+        .repetition-vocab-card { background: #f8fafc; border: 1px solid var(--card-border); padding: 1.5rem; border-radius: 20px; margin-bottom: 1.5rem; }
+        
+        .media-control-row { display: flex; gap: 0.75rem; margin-top: 0.75rem; align-items: center; }
+        .media-action-trigger-btn { background: #eef2ff; color: var(--visa-blue); border: 1px solid #cbd5e1; padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; }
+        .media-action-trigger-btn:hover { background: #e0f2fe; }
+        .media-action-trigger-btn.mic-style-dark { background: var(--visa-blue); color: white; border: none; }
+        .media-action-trigger-btn.mic-style-dark:hover { background: var(--action-orange); }
+        .media-action-trigger-btn.mic-style-dark.recording-active { background: #dc2626; }
+        .media-action-trigger-btn.skip-style-btn { background: transparent; color: #94a3b8; border: 1px solid var(--card-border); }
+        
+        .slider-disclosure-summary { font-size: 0.8rem; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; padding: 0.4rem 1rem; border-radius: 8px; cursor: pointer; display: inline-block; user-select: none; margin-top: 0.5rem; }
