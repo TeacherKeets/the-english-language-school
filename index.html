@@ -7,22 +7,28 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         
-        /* Updated Page Background to Soft Blue */
+        /* Vibrant Blue Gradient Background */
         body { 
-            background-color: #f0f4f8; 
+            background: linear-gradient(180deg, #0b192c 0%, #1e3e62 40%, #0f172a 100%); 
+            background-attachment: fixed;
             color: #0f172a; 
             line-height: 1.6; 
+            min-height: 100vh;
         }
         
         /* Modern Header & Navigation */
         .main-header {
-            background-color: #0b192c;
+            background-color: rgba(11, 25, 44, 0.85);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
             border-bottom: 3px solid #ff6500;
-            box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
@@ -46,8 +52,8 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.2s ease;
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .nav-btn:hover {
@@ -69,7 +75,7 @@
             margin-top: 0.5rem;
             background-color: #ffffff;
             min-width: 200px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
             border-radius: 8px;
             overflow: hidden;
             z-index: 100;
@@ -95,55 +101,50 @@
             display: block;
         }
 
-        /* Hero Header */
+        /* Hero Section */
         .hero { 
-            background: linear-gradient(135deg, #0b192c, #1e3e62); 
-            color: #fff; 
             text-align: center; 
-            padding: 3.5rem 1rem; 
+            padding: 3.5rem 1rem 2rem; 
+            color: #ffffff;
         }
-        .hero h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
-        .hero p { color: #e2e8f0; font-size: 1.1rem; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hero p { color: #cbd5e1; font-size: 1.15rem; }
         
-        .container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem; }
+        .container { max-width: 1100px; margin: 1.5rem auto 3rem; padding: 0 1rem; }
+        
         .section-title { 
             font-size: 1.6rem; 
-            color: #0b192c; 
-            margin: 1rem 0 1.5rem; 
+            color: #ffffff; 
+            margin: 2rem 0 1.5rem; 
             border-bottom: 3px solid #ff6500; 
             display: inline-block; 
             padding-bottom: 0.2rem; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        /* 3-Card Grid Configuration */
+        /* Grid Layout */
         .grid { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 1.5rem; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 1.8rem; 
         }
 
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
-        }
-
+        /* High-Contrast Standout Cards */
         .card { 
             background: #ffffff; 
-            border: 1px solid #dbe2ea; 
-            border-radius: 12px; 
+            border-radius: 14px; 
             overflow: hidden;
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06); 
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 20px -4px rgba(15, 23, 42, 0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
         }
         
         .card-img {
@@ -154,7 +155,7 @@
         }
         
         .card-content {
-            padding: 1.25rem;
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -167,14 +168,14 @@
             border: 1px solid #ffcbac;
             font-size: 0.75rem; 
             font-weight: 700; 
-            padding: 0.2rem 0.6rem; 
-            border-radius: 4px; 
+            padding: 0.25rem 0.65rem; 
+            border-radius: 6px; 
             text-transform: uppercase; 
-            margin-bottom: 0.5rem; 
+            margin-bottom: 0.6rem; 
         }
         .date { font-size: 0.8rem; color: #64748b; margin-bottom: 0.5rem; }
-        .card h3 { font-size: 1.2rem; color: #0b192c; margin-bottom: 0.5rem; }
-        .card p { font-size: 0.95rem; color: #475569; margin-bottom: 1.2rem; flex-grow: 1; }
+        .card h3 { font-size: 1.25rem; color: #0b192c; margin-bottom: 0.5rem; font-weight: 700; }
+        .card p { font-size: 0.95rem; color: #475569; margin-bottom: 1.4rem; flex-grow: 1; }
         
         .btn { 
             display: block; 
@@ -182,39 +183,37 @@
             background-color: #ff6500; 
             color: #fff; 
             text-decoration: none; 
-            padding: 0.65rem 1rem; 
-            border-radius: 6px; 
+            padding: 0.7rem 1rem; 
+            border-radius: 8px; 
             font-weight: 700; 
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 4px 10px rgba(255, 101, 0, 0.3);
         }
         .btn:hover { background-color: #e05500; }
 
-        /* Full Library List */
-        .library-list { 
-            background: #ffffff; 
-            border-radius: 12px; 
-            border: 1px solid #dbe2ea; 
-            overflow: hidden; 
-            margin-top: 1rem;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
-        }
-        .library-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-bottom: 1px solid #f1f5f9; }
-        .library-item:last-child { border-bottom: none; }
-        .library-info { display: flex; gap: 1rem; align-items: center; }
-        .library-thumb { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; }
-        
-        /* Stylish Dark Blue Accent Box for Kids Corner */
+        /* Kids Container Box */
         .kids-box { 
-            background: linear-gradient(135deg, #0b192c, #1a365d); 
-            border-radius: 16px; 
+            background: rgba(255, 255, 255, 0.07); 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 18px; 
             padding: 2rem; 
             margin: 3.5rem 0; 
-            box-shadow: 0 10px 25px rgba(11, 25, 44, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
-        .kids-box .section-title {
-            color: #ffffff;
-            border-bottom-color: #ff6500;
+
+        /* Full Library List Box */
+        .library-list { 
+            background: #ffffff; 
+            border-radius: 14px; 
+            overflow: hidden; 
+            margin-top: 1rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
+        .library-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
+        .library-item:last-child { border-bottom: none; }
+        .library-info { display: flex; gap: 1rem; align-items: center; }
+        .library-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -264,14 +263,14 @@
                 const response = await fetch('lessons.json');
                 const data = await response.json();
 
-                // 1. Load up to 3 Adult Lessons in Grid
+                // 1. Load up to 3 Adult Lessons
                 const adultGrid = document.getElementById('adult-grid');
                 const featuredAdults = data.adults.slice(0, 3);
                 adultGrid.innerHTML = featuredAdults.map(lesson => `
                     <div class="card">
                         ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
                         <div class="card-content">
-                            <span class="badge">${lesson.category}</span>
+                            ${lesson.category ? `<span class="badge">${lesson.category}</span>` : ''}
                             <div class="date">${lesson.date}</div>
                             <h3>${lesson.title}</h3>
                             <p>${lesson.description}</p>
@@ -280,7 +279,7 @@
                     </div>
                 `).join('');
 
-                // 2. Load up to 3 Kids Lessons in Grid
+                // 2. Load up to 3 Kids Lessons
                 const kidsGrid = document.getElementById('kids-grid');
                 const featuredKids = data.kids.slice(0, 3);
                 kidsGrid.innerHTML = featuredKids.map(lesson => `
@@ -302,12 +301,12 @@
                         <div class="library-info">
                             ${lesson.image ? `<img src="${lesson.image}" alt="" class="library-thumb">` : ''}
                             <div>
-                                <span class="badge">${lesson.category}</span>
+                                ${lesson.category ? `<span class="badge">${lesson.category}</span>` : ''}
                                 <div><strong>${lesson.title}</strong></div>
                                 <div class="date">${lesson.date}</div>
                             </div>
                         </div>
-                        <a href="${lesson.link}" class="btn" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;">View</a>
+                        <a href="${lesson.link}" class="btn" style="padding: 0.35rem 0.9rem; font-size: 0.85rem;">View</a>
                     </div>
                 `).join('');
 
