@@ -270,7 +270,7 @@
                     `).join('');
                 }
 
-                // 2. Load Up To 4 Kids Lessons
+                // 2. Load Kids Lessons
                 const kidsGrid = document.getElementById('kids-grid');
                 if (kidsGrid && data.kids) {
                     const featuredKids = data.kids.slice(0, 4);
@@ -287,7 +287,7 @@
                     `).join('');
                 }
 
-                // 3. Load All Lessons into Library List
+                // 3. Load Library List
                 const libraryContainer = document.getElementById('library-container');
                 if (libraryContainer && data.adults) {
                     libraryContainer.innerHTML = data.adults.map(lesson => `
