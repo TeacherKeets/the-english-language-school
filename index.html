@@ -18,100 +18,104 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--deep-canvas); color: #ffffff; min-height: 100vh; -webkit-font-smoothing: antialiased; padding-bottom: 5rem; }
+        body { background-color: var(--deep-canvas); color: #ffffff; min-height: 100vh; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         .hidden { display: none !important; }
         
         /* Premium Branded Navigation Bar */
-        header { background: #ffffff; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--action-orange); box-shadow: 0 10px 30px rgba(10,37,64,0.1); }
+        header { background: #ffffff; padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--action-orange); box-shadow: 0 10px 30px rgba(10,37,64,0.1); }
         .brand-zone { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; text-decoration: none; }
         .brand-logo { font-size: 1.8rem; }
         .brand-title { color: var(--visa-blue); font-weight: 800; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.03em; }
         .brand-title span { color: var(--action-orange); }
         
         .header-nav { display: flex; gap: 1rem; align-items: center; }
-        .header-btn { background: #f1f5f9; color: var(--visa-blue); border: 1px solid var(--border-light); padding: 0.7rem 1.5rem; font-size: 0.85rem; font-weight: 700; border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+        .header-btn { background: #f1f5f9; color: var(--visa-blue); border: 1px solid var(--border-light); padding: 0.6rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s; }
         .header-btn:hover { background: var(--visa-blue); color: #ffffff; }
         .orange-cta-btn { background: linear-gradient(135deg, var(--action-orange), #FF8533); color: #ffffff; border: none; font-weight: 800; box-shadow: 0 4px 14px rgba(255,107,0,0.3); }
         .orange-cta-btn:hover { background: var(--hover-orange); transform: translateY(-1px); }
 
-        /* High-Conversion Global Hero Banner Section */
-        .hero-banner { max-width: 1240px; margin: 4rem auto 2rem auto; padding: 0 2rem; text-align: center; }
-        .hero-banner h2 { font-size: 3.2rem; font-weight: 800; tracking: -0.04em; max-width: 900px; margin: 0 auto; line-height: 1.15; color: #ffffff; }
-        .hero-banner h2 span { color: var(--action-orange); }
-        .hero-banner p { color: #94a3b8; font-size: 1.2rem; margin-top: 1.25rem; max-width: 650px; margin-left: auto; margin-right: auto; font-weight: 500; line-height: 1.6; }
-
-        /* Main Portal Article Stream Feed Grid Layout */
-        .main-workspace { max-width: 1240px; margin: 3rem auto; padding: 0 2rem; }
-        .section-headline { font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; }
-        .section-headline::before { content: ""; display: inline-block; width: 6px; height: 1.8rem; background: var(--action-orange); border-radius: 4px; }
-
-        .magazine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 3rem; }
-        .magazine-card { background: var(--card-bg); border-radius: 28px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; display: flex; flex-direction: column; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; text-decoration: none; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .magazine-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(255,107,0,0.1); border-color: rgba(255,107,0,0.3); }
+        /* HIGH-CONVERSION SPLIT SCREEN INTERFACE (Fits entire layout above the fold) */
+        .portal-layout { display: grid; grid-template-columns: 400px 1fr; min-height: calc(100vh - 70px); max-width: 1600px; margin: 0 auto; }
         
-        /* Programmatic Color Canvas Generator (100% immune to link breaks) */
-        .card-visual-frame { height: 210px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; padding: 2rem; }
+        /* Left Column: Core Selling Proposition Pitch Panel */
+        .marketing-pitch-panel { background: linear-gradient(180deg, #0A2540 0%, #051425 100%); padding: 3rem 2rem; border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: center; }
+        .marketing-pitch-panel h2 { font-size: 2.2rem; font-weight: 800; tracking: -0.03em; line-height: 1.2; margin-bottom: 1.25rem; color: #ffffff; }
+        .marketing-pitch-panel h2 span { color: var(--action-orange); }
+        .marketing-pitch-panel p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; font-weight: 500; }
         
-        .badge-tag { position: absolute; top: 1.25rem; left: 1.25rem; color: #ffffff; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; tracking: 0.08em; padding: 0.4rem 0.85rem; border-radius: 8px; z-index: 10; font-family: monospace; }
+        /* Right Column: Active Learning Workspace & Grid Streams */
+        .content-feed-workspace { padding: 3rem; background: var(--deep-canvas); overflow-y: auto; }
+        .section-headline { font-size: 1.6rem; font-weight: 800; margin-bottom: 2rem; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; }
+        .section-headline::before { content: ""; display: inline-block; width: 6px; height: 1.5rem; background: var(--action-orange); border-radius: 4px; }
+
+        /* Magazine Style Learning Grid */
+        .magazine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+        .magazine-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.02); }
+        .magazine-card:hover { transform: translateY(-8px); box-shadow: 0 30px 50px rgba(255,107,0,0.12); border-color: rgba(255,107,0,0.3); }
+        
+        /* Unbreakable Programmatic Embedded High-Definition Graphic Frame Canvas */
+        .card-visual-frame { height: 160px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+        .card-graphic-svg { width: 100%; height: 100%; }
+
+        .badge-tag { position: absolute; top: 1rem; left: 1rem; color: #ffffff; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; tracking: 0.08em; padding: 0.4rem 0.85rem; border-radius: 8px; z-index: 10; font-family: monospace; }
         .badge-free { background: #10b981; }
         .badge-premium { background: var(--action-orange); box-shadow: 0 4px 10px rgba(255,107,0,0.4); }
 
-        .card-body-content { padding: 2rem; flex: 1; display: flex; flex-direction: column; background: #ffffff; }
-        .card-main-title { font-size: 1.25rem; font-weight: 800; line-height: 1.4; color: var(--visa-blue); margin-bottom: 0.85rem; }
-        .card-main-excerpt { font-size: 0.85rem; color: #475569; line-height: 1.6; flex-grow: 1; }
+        .card-body-content { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; background: #ffffff; }
+        .card-main-title { font-size: 1.15rem; font-weight: 800; line-height: 1.4; color: var(--visa-blue); margin-bottom: 0.6rem; }
+        .card-main-excerpt { font-size: 0.85rem; color: #475569; line-height: 1.5; flex-grow: 1; }
         
-        .card-action-trigger { margin-top: 2rem; width: 100%; background: var(--visa-blue); color: #ffffff; border: none; padding: 0.95rem; font-size: 0.85rem; font-weight: 800; border-radius: 14px; text-align: center; text-transform: uppercase; tracking: 0.05em; transition: all 0.2s; }
-        .magazine-card:hover .card-action-trigger { background: var(--action-orange); box-shadow: 0 4px 14px rgba(255,107,0,0.3); }
+        .card-action-trigger { margin-top: 1.5rem; width: 100%; background: var(--visa-blue); color: #ffffff; border: none; padding: 0.85rem; font-size: 0.85rem; font-weight: 800; border-radius: 12px; text-align: center; text-transform: uppercase; tracking: 0.05em; transition: all 0.2s; }
+        .magazine-card:hover .card-action-trigger { background: var(--action-orange); }
 
         /* The Live Lesson Active Workspace Panels */
-        .workspace-frame { max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }
+        .workspace-frame { max-width: 900px; margin: 1rem auto; padding: 0; color: #000000; }
         .workspace-progress-ribbon { background: #ffffff; color: var(--visa-blue); padding: 1.25rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-left: 5px solid var(--action-orange); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .workspace-central-card { background: white; border: 1px solid var(--border-light); border-radius: 28px; padding: 2.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); color: var(--visa-blue); }
         
         .repetition-vocab-card { background: #f8fafc; border: 1px solid var(--border-light); padding: 1.5rem; border-radius: 20px; margin-bottom: 1.5rem; }
-        
         .media-control-row { display: flex; gap: 0.75rem; margin-top: 0.75rem; align-items: center; }
         .media-action-trigger-btn { background: #eef2ff; color: var(--visa-blue); border: 1px solid #cbd5e1; padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.35rem; }
-        .media-action-trigger-btn:hover { background: #e0f2fe; }
         .media-action-trigger-btn.mic-style-dark { background: var(--visa-blue); color: white; border: none; }
-        .media-action-trigger-btn.mic-style-dark:hover { background: var(--action-orange); }
         .media-action-trigger-btn.mic-style-dark.recording-active { background: #dc2626; }
         .media-action-trigger-btn.skip-style-btn { background: transparent; color: #94a3b8; border: 1px solid var(--border-light); }
         
-        .slider-disclosure-summary { font-size: 0.8rem; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; padding: 0.4rem 1rem; border-radius: 8px; cursor: pointer; display: inline-block; user-select: none; margin-top: 0.5rem; }
+        .slider-disclosure-summary { font-size: 0.8rem; font-weight: 700; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; padding: 0.4rem 1rem; border-radius: 8px; cursor: pointer; display: inline-block; margin-top: 0.5rem; }
         .slider-disclosure-content { background: #fffbeb; border: 1px solid #fde68a; padding: 1rem; border-radius: 10px; margin-top: 0.5rem; font-size: 0.85rem; font-family: monospace; color: #78350f; }
-
         .live-critique-box { background: #e0f2fe; color: #0369a1; padding: 1.25rem; border-radius: 16px; margin-top: 1.25rem; font-size: 0.85rem; line-height: 1.6; font-weight: 500; border: 1px solid #bae6fd; }
         .lesson-complete-report-card { background: #ecfdf5; border: 2px solid #a7f3d0; color: #065f46; padding: 2rem; border-radius: 24px; margin-top: 2rem; }
 
         .workspace-footer-navigation { display: flex; justify-content: space-between; margin-top: 1.5rem; }
-        .step-toggle-footer-btn { background: var(--visa-blue); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
-        .step-toggle-footer-btn:hover { background: var(--action-orange); }
-        .step-toggle-footer-btn:disabled { opacity: 0.3; cursor: not-allowed; background: var(--visa-blue) !important; }
-
-        .choice-option-interactive-card { display: flex; align-items: center; gap: 0.75rem; padding: 1rem; background: #f8fafc; border: 1px solid var(--border-light); border-radius: 12px; margin-bottom: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
-        .choice-option-interactive-card.selected-active-state { background: #eef2ff; border-color: #a5b4fc; color: var(--visa-blue); border-left: 4px solid var(--action-orange); }
+        .step-toggle-footer-btn { background: var(--visa-blue); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+        .step-toggle-footer-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         textarea { width: 100%; border-radius: 14px; border: 1px solid #cbd5e1; padding: 1rem; font-size: 0.85rem; outline: none; margin-bottom: 1rem; }
     </style>
 </head>
 <body>
 
-    <!-- BRANDED SCHOOL HEADER -->
+    <!-- BRANDED ACADEMY HEADER MENU -->
     <header>
         <div class="brand-zone" onclick="routeToPanel('feed')">
             <span class="brand-logo">🎓</span>
             <h1 class="brand-title">The English <span>Language School</span></h1>
         </div>
         <div class="header-nav">
-            <button onclick="routeToPanel('feed')" class="header-btn">🏛️ Landing Feed</button>
+            <button onclick="routeToPanel('feed')" class="header-btn">🏛️ Home Feed</button>
             <button onclick="routeToPanel('pricing')" class="header-btn orange-cta-btn">✨ Pricing & Tutors</button>
         </div>
     </header>
 
-    <!-- CORE FEED PANEL LAYOUT -->
-    <div id="feedPanelGroup">
-        <div class="hero-banner">
-            <h2>Read Trending News. <span>Speak Flawless English.</span></h2>
-            <p>An interactive, speech-driven learning platform structured directly at the A2 fluency level. Learn independently or alongside certified private coaching staff.</p>
+    <div class="portal-layout">
+        
+        <!-- LEFT COLUMN: CONVERSION PITCH SLATE -->
+        <div id="marketingSidebarPanel" class="marketing-pitch-panel">
+            <h2>Read Daily News. <span>Speak Flawless English.</span></h2>
+            <p>A precision speech-training interface engineered explicitly for CEFR-A2 fluency development. Select any daily article on the right side of your dashboard to instantly launch your interactive 6-stage practice loops.</p>
         </div>
 
+        <!-- RIGHT COLUMN: THE LIVE DYNAMIC REPOSITORY OR WORKSPACE PANELS -->
+        <div class="content-feed-workspace">
+            
+            <!-- PANEL SUB-VIEW A: DAILY MAGAZINE STORAGE GRID -->
+            <div id="feedPanelGroup">
+                <h2 class="section-headline">Daily Lesson Library Feed</h2>
