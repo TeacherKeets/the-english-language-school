@@ -29,18 +29,8 @@
             z-index: 1000;
         }
 
-        .logo {
-            color: #ffffff;
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
+        .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 1rem; align-items: center; }
 
         .nav-btn {
             color: #ffffff;
@@ -54,17 +44,9 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .nav-btn:hover {
-            background-color: #ff6500;
-            border-color: #ff6500;
-            color: #ffffff;
-        }
+        .nav-btn:hover { background-color: #ff6500; border-color: #ff6500; color: #ffffff; }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -90,20 +72,10 @@
             transition: background-color 0.2s ease;
         }
 
-        .dropdown-content a:hover {
-            background-color: #fff3eb;
-            color: #d94600;
-        }
+        .dropdown-content a:hover { background-color: #fff3eb; color: #d94600; }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .hero { 
-            text-align: center; 
-            padding: 3.5rem 1rem 2rem; 
-            color: #ffffff;
-        }
+        .hero { text-align: center; padding: 3.5rem 1rem 2rem; color: #ffffff; }
         .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
         .hero p { color: #cbd5e1; font-size: 1.15rem; margin-bottom: 1.5rem; }
 
@@ -140,17 +112,10 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 1.2rem; 
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
 
-        /* Enforce exact 4 columns on screens desktop size */
         @media (min-width: 900px) {
-            .kids-grid-4 {
-                grid-template-columns: repeat(4, 1fr) !important;
-            }
+            .kids-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
         }
 
         .card { 
@@ -161,28 +126,13 @@
             flex-direction: column; 
             justify-content: space-between; 
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
-            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-        }
-        
-        .card-img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .card-content {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+        .card-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+        .card-content { padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; }
 
         .badge { 
             align-self: flex-start; 
@@ -197,22 +147,8 @@
             margin-bottom: 0.5rem; 
         }
         .date { font-size: 0.78rem; color: #64748b; margin-bottom: 0.4rem; }
-        .card h3 { 
-            font-size: 1.05rem; 
-            color: #0b192c; 
-            margin-bottom: 0.4rem; 
-            font-weight: 700; 
-            line-height: 1.3;
-            min-height: 2.6em; /* Keeps titles uniform across rows */
-        }
-        .card p { 
-            font-size: 0.85rem; 
-            color: #475569; 
-            margin-bottom: 1rem; 
-            flex-grow: 1; 
-            line-height: 1.4;
-            min-height: 3.8em; /* Uniform height for text boxes */
-        }
+        .card h3 { font-size: 1.05rem; color: #0b192c; margin-bottom: 0.4rem; font-weight: 700; line-height: 1.3; min-height: 2.6em; }
+        .card p { font-size: 0.85rem; color: #475569; margin-bottom: 1rem; flex-grow: 1; line-height: 1.4; min-height: 3.8em; }
         
         .btn { 
             display: block; 
@@ -227,6 +163,8 @@
             transition: background-color 0.2s ease;
             box-shadow: 0 4px 10px rgba(255, 101, 0, 0.3);
             margin-top: auto;
+            border: none;
+            cursor: pointer;
         }
         .btn:hover { background-color: #e05500; }
 
@@ -240,13 +178,64 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        .library-list { 
-            background: #ffffff; 
-            border-radius: 14px; 
-            overflow: hidden; 
-            margin-top: 1rem;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        /* Interactive Writing Box */
+        .writing-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
+        .prompt-card {
+            background: #f8fafc;
+            border-left: 4px solid #ff6500;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b; }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus { border-color: #ff6500; }
+        .form-textarea { height: 120px; resize: vertical; }
+
+        /* Trust & FAQ Sections */
+        .teacher-section {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            color: #ffffff;
+            margin: 3rem 0;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .teacher-info { flex: 1; min-width: 280px; }
+        .teacher-info h3 { font-size: 1.5rem; color: #ff6500; margin-bottom: 0.5rem; }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .faq-item h4 { color: #0b192c; font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .faq-item p { color: #475569; font-size: 0.9rem; }
+
+        .library-list { background: #ffffff; border-radius: 14px; overflow: hidden; margin-top: 1rem; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
         .library-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
         .library-item:last-child { border-bottom: none; }
         .library-info { display: flex; gap: 1rem; align-items: center; }
@@ -264,6 +253,7 @@
           <div class="dropdown-content">
             <a href="#featured-adult">Adult Lessons</a>
             <a href="#kids-lessons">Kids Corner</a>
+            <a href="#writing-zone">Writing Practice</a>
             <a href="#adult-library">Full Library</a>
           </div>
         </div>
@@ -273,7 +263,7 @@
     <section class="hero">
         <h1>The English Language School</h1>
         <p>Daily interactive lessons & full practice library</p>
-        <a href="#featured-adult" class="cta-btn">Book Your Free Lesson Today</a>
+        <a href="#writing-zone" class="cta-btn">Book Your Free Lesson Today</a>
     </section>
 
     <main class="container">
@@ -284,6 +274,48 @@
         <div class="kids-box" id="kids-lessons">
             <h2 class="section-title" style="margin-top: 0;">🎈 Kids Corner</h2>
             <div class="grid kids-grid-4" id="kids-grid"></div>
+        </div>
+
+        <!-- Interactive Writing Practice Section -->
+        <div class="writing-box" id="writing-zone">
+            <h2 style="color: #0b192c; margin-bottom: 0.5rem;">✍️ Daily Writing Practice Zone</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 0.95rem;">Type your writing exercise below and submit it directly to your teacher for personalized feedback.</p>
+            
+            <div class="prompt-card">
+                <strong>Today's Writing Prompt:</strong>
+                <p style="font-weight: 400; margin-top: 0.3rem;">Describe your favorite weekend activity in 3 to 5 sentences. Use at least two action verbs.</p>
+            </div>
+
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-group">
+                    <label>Your Name & Email</label>
+                    <input type="text" name="name_email" class="form-input" placeholder="e.g., Sarah - sarah@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Response (Type here)</label>
+                    <textarea name="writing_submission" class="form-textarea" placeholder="Start typing your sentences here..." required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: auto; padding: 0.8rem 2rem; font-size: 1rem;">Submit for Teacher Review</button>
+            </form>
+        </div>
+
+        <!-- Meet Your Teacher -->
+        <div class="teacher-section">
+            <div class="teacher-info">
+                <h3>Meet Your Lead Teacher</h3>
+                <p>Welcome to The English Language School! I specialize in helping both kids and adults speak and write English with confidence through fun, structured, and interactive practice. Every submission is personally reviewed so you receive actionable guidance to improve quickly.</p>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h4>How does teacher feedback work on writing practice?</h4>
+            <p>Once you submit your paragraph in the Writing Zone, a qualified teacher reviews your work and emails you personalized corrections and vocabulary tips within 24 hours.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Who are these lessons designed for?</h4>
+            <p>We provide tailored paths for both adult language learners seeking practical fluency and young learners building foundational literacy.</p>
         </div>
 
         <h2 class="section-title" id="adult-library">Lesson Library (Past Lessons)</h2>
