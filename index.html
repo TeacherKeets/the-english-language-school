@@ -3,105 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Articles & Lessons | The English Language School</title>
+    <title>The English Language School</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: linear-gradient(180deg, #0b192c 0%, #1e3e62 40%, #0f172a 100%); background-attachment: fixed; color: #0f172a; line-height: 1.6; min-height: 100vh; }
         
-        .main-header { background-color: rgba(11, 25, 44, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; border-bottom: 3px solid #ff6500; position: sticky; top: 0; z-index: 1000; }
-        .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; text-decoration: none; }
-        .nav-btn { color: #ffffff; text-decoration: none; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
-        .nav-btn:hover { background-color: #ff6500; border-color: #ff6500; }
+        body { 
+            background: linear-gradient(180deg, #0b192c 0%, #1e3e62 40%, #0f172a 100%); 
+            background-attachment: fixed;
+            color: #0f172a; 
+            line-height: 1.6; 
+            min-height: 100vh;
+        }
         
-        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-        .page-title { color: #ffffff; font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center; }
-        .page-subtitle { color: #cbd5e1; text-align: center; margin-bottom: 2rem; font-size: 1.1rem; }
-        
-        /* Subcategory Filter Buttons */
-        .filter-bar { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-        .filter-btn { background: rgba(255,255,255,0.1); color: #ffffff; border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1.4rem; border-radius: 20px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-size: 0.95rem; }
-        .filter-btn.active, .filter-btn:hover { background: #ff6500; border-color: #ff6500; color: #ffffff; }
+        .main-header {
+            background-color: rgba(11, 25, 44, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 3px solid #ff6500;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-        .card { background: #ffffff; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .card-img { width: 100%; height: 160px; object-fit: cover; }
-        .card-content { padding: 1.2rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .badge { align-self: flex-start; background-color: #fff3eb; color: #d94600; border: 1px solid #ffcbac; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 6px; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .card h3 { font-size: 1.1rem; color: #0b192c; margin-bottom: 0.5rem; }
-        .card p { font-size: 0.9rem; color: #475569; margin-bottom: 1.2rem; flex-grow: 1; }
-        .btn { display: block; text-align: center; background-color: #ff6500; color: #fff; text-decoration: none; padding: 0.7rem; border-radius: 8px; font-weight: 700; }
+        .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; }
+        .nav-links { display: flex; gap: 1rem; align-items: center; }
+
+        .nav-btn {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-btn:hover { background-color: #ff6500; border-color: #ff6500; color: #ffffff; }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            background-color: #ffffff;
+            min-width: 260px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 100;
+            border: 1px solid #cbd5e1;
+        }
+
+        .dropdown-content a {
+            color: #0f172a;
+            padding: 0.75rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover { background-color: #fff3eb; color: #d94600; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        .hero { text-align: center; padding: 3.5rem 1rem 2rem; color: #ffffff; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hero p { color: #cbd5e1; font-size: 1.15rem; margin-bottom: 1.5rem; }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff6500;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(255, 101, 0, 0.4);
+            border: 2px solid #ff6500;
+        }
+
+        .cta-btn:hover {
+            background-color: #e05500;
+            border-color: #e05500;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 101, 0, 0.5);
+        }
+        
+        .container { max-width: 1200px; margin: 1.5rem auto 3rem; padding: 0 1rem; }
+        
+        .section-title { 
+            font-size: 1.6rem; 
+            color: #ffffff; 
+            margin: 2rem 0 1.5rem; 
+            border-bottom: 3px solid #ff6500; 
+            display: inline-block; 
+            padding-bottom: 0.2rem; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+
+        @media (min-width: 900px) {
+            .kids-grid-4 { grid-template-columns: repeat(4, 1fr) !important; }
+        }
+
+        .card { 
+            background: #ffffff; 
+            border-radius: 14px; 
+            overflow: hidden;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+        .card-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+        .card-content { padding: 1rem; display: flex; flex-direction: column; flex-grow: 1; }
+
+        .badge { 
+            align-self: flex-start; 
+            background-color: #fff3eb; 
+            color: #d94600; 
+            border: 1px solid #ffcbac;
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 6px; 
+            text-transform: uppercase; 
+            margin-bottom: 0.5rem; 
+        }
+        .date { font-size: 0.78rem; color: #64748b; margin-bottom: 0.4rem; }
+        .card h3 { font-size: 1.05rem; color: #0b192c; margin-bottom: 0.4rem; font-weight: 700; line-height: 1.3; min-height: 2.6em; }
+        .card p { font-size: 0.85rem; color: #475569; margin-bottom: 1rem; flex-grow: 1; line-height: 1.4; min-height: 3.8em; }
+        
+        .btn { 
+            display: block; 
+            text-align: center; 
+            background-color: #ff6500; 
+            color: #fff; 
+            text-decoration: none; 
+            padding: 0.6rem 0.8rem; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 101, 0, 0.3);
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+        }
         .btn:hover { background-color: #e05500; }
+
+        .kids-box { 
+            background: rgba(255, 255, 255, 0.07); 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 18px; 
+            padding: 1.5rem; 
+            margin: 3.5rem 0; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Writing Box & Tabs */
+        .writing-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        .tab-buttons { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .tab-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .tab-btn.active { background: #ff6500; color: #ffffff; border-color: #ff6500; }
+        .prompt-card {
+            background: #f8fafc;
+            border-left: 4px solid #ff6500;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem; color: #1e293b; }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .form-textarea { height: 120px; resize: vertical; }
+        .word-counter { font-size: 0.8rem; color: #64748b; text-align: right; margin-top: 0.2rem; }
+
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .testimonial-card { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .stars { color: #ff6500; margin-bottom: 0.5rem; }
+
+        /* Teacher & FAQ */
+        .teacher-section {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            color: #ffffff;
+            margin: 3rem 0;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .library-list { background: #ffffff; border-radius: 14px; overflow: hidden; margin-top: 1rem; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+        .library-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
+        .library-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
     </style>
 </head>
 <body>
 
     <header class="main-header">
-      <a href="../index.html" class="logo">The English Language School</a>
-      <a href="../index.html" class="nav-btn">← Home</a>
+      <a href="index.html" class="logo">The English Language School</a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-btn">Home</a>
+        <div class="dropdown">
+          <a href="articles/index.html" class="nav-btn">Courses ▾</a>
+          <div class="dropdown-content">
+            <a href="articles/index.html">Daily Articles (Business, History, Life)</a>
+            <a href="kids/index.html">Kids Corner (Ages 3-14)</a>
+            <a href="conversation/index.html">Free Conversation Practice</a>
+            <a href="ielts/index.html">IELTS Exam Prep Hub</a>
+            <a href="#writing-zone">Daily Writing Zone</a>
+            <a href="#adult-library">Full Library</a>
+          </div>
+        </div>
+      </nav>
     </header>
 
-    <main class="container">
-        <h1 class="page-title">Daily Articles & Lessons</h1>
-        <p class="page-subtitle">Select a category below to explore focused lessons and readings.</p>
+    <section class="hero">
+        <h1>The English Language School</h1>
+        <p>Daily interactive lessons & full practice library</p>
+        <a href="#writing-zone" class="cta-btn">Book Your Free Lesson Today</a>
+    </section>
 
-        <!-- Subcategory Filter Bar -->
-        <div class="filter-bar">
-            <button class="filter-btn active" onclick="filterArticles('All', this)">All Subcategories</button>
-            <button class="filter-btn" onclick="filterArticles('Business English', this)">Business English</button>
-            <button class="filter-btn" onclick="filterArticles('History', this)">History</button>
-            <button class="filter-btn" onclick="filterArticles('Life', this)">Life</button>
-            <button class="filter-btn" onclick="filterArticles('Entertainment', this)">Entertainment</button>
+    <main class="container">
+        
+        <h2 class="section-title" id="featured-adult">Featured Daily Articles</h2>
+        <div class="grid" id="adult-grid"></div>
+
+        <div class="kids-box" id="kids-lessons">
+            <h2 class="section-title" style="margin-top: 0;">🎈 Kids Corner</h2>
+            <div class="grid kids-grid-4" id="kids-grid"></div>
         </div>
 
-        <div class="grid" id="articles-grid"></div>
+        <!-- Interactive Writing Practice Section -->
+        <div class="writing-box" id="writing-zone">
+            <h2 style="color: #0b192c; margin-bottom: 0.5rem;">✍️ Daily Writing Practice Zone</h2>
+            <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.95rem;">Type your submission below for personalized teacher feedback.</p>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchPrompt('adult')">Adult Prompt</button>
+                <button class="tab-btn" onclick="switchPrompt('kids')">Kids Prompt</button>
+            </div>
+
+            <div class="prompt-card" id="prompt-display">
+                <strong>Today's Adult Prompt:</strong>
+                <p style="font-weight: 400; margin-top: 0.3rem;">Write a 3-sentence email requesting an update on a work project.</p>
+            </div>
+
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <div class="form-group">
+                    <label>Your Name & Email</label>
+                    <input type="text" name="name_email" class="form-input" placeholder="e.g., Sarah - sarah@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Response</label>
+                    <textarea name="writing_submission" id="writing-input" class="form-textarea" placeholder="Start typing here..." oninput="updateWordCount()" required></textarea>
+                    <div class="word-counter" id="word-count">Words: 0</div>
+                </div>
+                <button type="submit" class="btn" style="width: auto; padding: 0.8rem 2rem; font-size: 1rem;">Submit for Feedback</button>
+            </form>
+        </div>
+
+        <!-- Testimonials -->
+        <h2 class="section-title">What Our Students Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.8rem;">"The writing feedback was incredibly fast and helped me correct small grammar errors I didn't notice."</p>
+                <strong>- Maria S. (Adult Learner)</strong>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.8rem;">"My 8-year-old looks forward to the daily Kids Corner stories every afternoon after school."</p>
+                <strong>- David P. (Parent)</strong>
+            </div>
+        </div>
+
+        <!-- Meet Your Teacher -->
+        <div class="teacher-section">
+            <h3 style="color: #ff6500; margin-bottom: 0.5rem;">Meet Your Teacher</h3>
+            <p>Welcome! I specialize in making English learning clear, practical, and enjoyable for both kids and adults. Every submission sent to our writing zone receives individual feedback to ensure continuous improvement.</p>
+        </div>
+
+        <!-- FAQs -->
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h4>How does teacher feedback work?</h4>
+            <p>Once submitted, a qualified teacher reviews your sentences and sends personalized tips directly to your email within 24 hours.</p>
+        </div>
+
+        <h2 class="section-title" id="adult-library">Lesson Library (Past Lessons)</h2>
+        <div class="library-list" id="library-container"></div>
+
     </main>
 
     <script>
-        let allArticles = [];
+        function switchPrompt(type) {
+            const display = document.getElementById('prompt-display');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
 
-        async function loadArticles() {
-            try {
-                const response = await fetch('../lessons.json');
-                const data = await response.json();
-                allArticles = data.adults || [];
-                renderGrid(allArticles);
-            } catch (err) {
-                console.error("Error loading articles:", err);
-            }
-        }
-
-        function renderGrid(articles) {
-            const grid = document.getElementById('articles-grid');
-            if (!articles.length) {
-                grid.innerHTML = `<p style="color: #ffffff; text-align: center; grid-column: 1/-1;">No articles available in this subcategory yet.</p>`;
-                return;
-            }
-            grid.innerHTML = articles.map(a => `
-                <div class="card">
-                    ${a.image ? `<img src="${a.image}" class="card-img" alt="${a.title}">` : ''}
-                    <div class="card-content">
-                        <span class="badge">${a.category || 'Article'}</span>
-                        <h3>${a.title || ''}</h3>
-                        <p>${a.description || ''}</p>
-                        <a href="../${a.link || '#'}" class="btn">Read Article</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function filterArticles(category, btnElement) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
-
-            if (category === 'All') {
-                renderGrid(allArticles);
+            if (type === 'adult') {
+                btns[0].classList.add('active');
+                display.innerHTML = `<strong>Today's Adult Prompt:</strong><p style="font-weight: 400; margin-top: 0.3rem;">Write a 3-sentence email requesting an update on a work project.</p>`;
             } else {
-                const filtered = allArticles.filter(item => item.category === category);
-                renderGrid(filtered);
+                btns[1].classList.add('active');
+                display.innerHTML = `<strong>Today's Kids Prompt:</strong><p style="font-weight: 400; margin-top: 0.3rem;">Describe your favorite animal using 3 descriptive words!</p>`;
             }
         }
 
-        loadArticles();
+        function updateWordCount() {
+            const text = document.getElementById('writing-input').value.trim();
+            const count = text ? text.split(/\s+/).length : 0;
+            document.getElementById('word-count').innerText = `Words: ${count}`;
+        }
+
+        async function loadLessons() {
+            try {
+                const response = await fetch('lessons.json');
+                const data = await response.json();
+
+                const adultGrid = document.getElementById('adult-grid');
+                if (adultGrid && data.adults) {
+                    adultGrid.innerHTML = data.adults.slice(0, 3).map(lesson => `
+                        <div class="card">
+                            ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
+                            <div class="card-content">
+                                ${lesson.category ? `<span class="badge">${lesson.category}</span>` : ''}
+                                <div class="date">${lesson.date || ''}</div>
+                                <h3>${lesson.title || ''}</h3>
+                                <p>${lesson.description || ''}</p>
+                                <a href="${lesson.link || '#'}" class="btn">Start Article</a>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                const kidsGrid = document.getElementById('kids-grid');
+                if (kidsGrid && data.kids) {
+                    kidsGrid.innerHTML = data.kids.slice(0, 4).map(lesson => `
+                        <div class="card">
+                            ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
+                            <div class="card-content">
+                                <div class="date">${lesson.date || ''}</div>
+                                <h3>${lesson.title || ''}</h3>
+                                <p>${lesson.description || ''}</p>
+                                <a href="${lesson.link || '#'}" class="btn">Play Story</a>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                const libraryContainer = document.getElementById('library-container');
+                if (libraryContainer && data.adults) {
+                    libraryContainer.innerHTML = data.adults.map(lesson => `
+                        <div class="library-item">
+                            <div class="library-info" style="display:flex; gap:1rem; align-items:center;">
+                                ${lesson.image ? `<img src="${lesson.image}" alt="" class="library-thumb">` : ''}
+                                <div>
+                                    ${lesson.category ? `<span class="badge">${lesson.category}</span>` : ''}
+                                    <div><strong>${lesson.title || ''}</strong></div>
+                                    <div class="date">${lesson.date || ''}</div>
+                                </div>
+                            </div>
+                            <a href="${lesson.link || '#'}" class="btn" style="padding: 0.35rem 0.9rem; font-size: 0.85rem;">View</a>
+                        </div>
+                    `).join('');
+                }
+            } catch (err) {
+                console.error("Error loading lesson library:", err);
+            }
+        }
+
+        loadLessons();
     </script>
 </body>
 </html>
