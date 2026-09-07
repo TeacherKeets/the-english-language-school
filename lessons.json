@@ -1,6 +1,15 @@
 {
   "adults": [
     {
+      "id": "hosp-101",
+      "title": "Hospitality: Handling Special Dietary Requests",
+      "category": "Hospitality English",
+      "date": "2026-09-08",
+      "description": "Master essential vocabulary and phrases to manage allergies and guest requests smoothly.",
+      "image": "https://picsum.photos/400/250?random=12",
+      "link": "articles/handling-special-requests.html"
+    },
+    {
       "id": "biz-101",
       "title": "Business: Pitching Ideas in Meetings",
       "category": "Business English",
