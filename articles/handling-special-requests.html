@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handling Special Dietary Requests - The English Language School</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(180deg, #0b192c 0%, #1e3e62 40%, #0f172a 100%);
+      background-attachment: fixed;
+      color: #0f172a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .main-header {
+      background-color: rgba(11, 25, 44, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 3px solid #ff6500;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .nav-btn {
+      color: #ffffff; text-decoration: none; padding: 0.5rem 1.2rem;
+      border-radius: 6px; font-weight: 600; background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .nav-btn:hover { background-color: #ff6500; border-color: #ff6500; }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    .lesson-card {
+      background: #ffffff; border-radius: 16px; padding: 2rem;
+      margin-bottom: 2rem; box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+    }
+    .lesson-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 2px solid #e2e8f0; padding-bottom: 1rem; margin-bottom: 1.5rem;
+    }
+    .badge {
+      background-color: #fff3eb; color: #d94600; border: 1px solid #ffcbac;
+      font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.6rem;
+      border-radius: 6px; text-transform: uppercase;
+    }
+    .lesson-section { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; }
+    .lesson-section h3 { color: #0b192c; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .audio-btn {
+      background: #ff6500; color: white; border: none; padding: 0.4rem 0.8rem;
+      border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem;
+      display: inline-flex; align-items: center; gap: 0.3rem; transition: background 0.2s ease;
+    }
+    .audio-btn:hover { background: #e05500; }
+    .vocab-card { background: #f8fafc; border-left: 4px solid #ff6500; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+    .vocab-word { font-size: 1.1rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem; }
+    details.hint-box { margin-top: 0.5rem; background: #f1f5f9; padding: 0.6rem; border-radius: 6px; font-size: 0.9rem; }
+    details.hint-box summary { cursor: pointer; font-weight: 600; color: #475569; }
+    textarea, input[type="text"] { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <a href="../index.html" class="logo">The English Language School</a>
+    <nav class="nav-links">
+      <a href="../index.html" class="nav-btn">Home</a>
+      <a href="index.html" class="nav-btn">Daily Lessons</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="lesson-card">
+      <div class="lesson-header">
+        <div>
+          <span class="badge">Hospitality English • Intermediate</span>
+          <h1 style="color: #0b192c; margin-top: 0.4rem;">Handling Special Dietary Requests</h1>
+        </div>
+      </div>
+
+      <!-- Part 1: Words & Phrases -->
+      <section class="lesson-section">
+        <h3>1. Words & Phrases</h3>
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>Complimentary</span>
+            <span class="badge" style="font-size:0.7rem;">Adjective</span>
+            <button class="audio-btn" onclick="playAudio('complimentary-word.mp3')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> Provided for free as a courtesy or service.</p>
+          <p style="margin-top: 0.4rem;">
+            <em>"We offer complimentary breakfast for all guests in the main dining hall."</em>
+            <button class="audio-btn" onclick="playAudio('complimentary-sentence.mp3')" style="font-size:0.75rem; padding: 0.2rem 0.6rem;">🔊 Sentence Audio</button>
+          </p>
+        </div>
+      </section>
+
+      <!-- Part 2: The Article -->
+      <section class="lesson-section">
+        <h3>2. The Article <button class="audio-btn" onclick="playAudio('article-full.mp3')">🎧 Listen to Article</button></h3>
+        <div style="line-height: 1.8; color: #334155;">
+          <p id="p1"><strong>Paragraph 1:</strong> In modern hospitality, accommodating guest food allergies and dietary restrictions is critical. Front-of-house staff must accurately communicate ingredient details between the guest and the kitchen to avoid health risks.</p>
+          <p id="p2" style="margin-top: 0.8rem;"><strong>Paragraph 2:</strong> When a request cannot be met immediately, offering a complimentary alternative demonstrates high-quality service and preserves customer loyalty.</p>
+        </div>
+      </section>
+
+      <!-- Part 3: Answer the Questions -->
+      <section class="lesson-section">
+        <h3>3. Answer the Questions</h3>
+        <div>
+          <p><strong>Q1: Why is communication between the front-of-house staff and kitchen essential?</strong></p>
+          <input type="text" placeholder="Type your answer here...">
+          <details class="hint-box">
+            <summary>💡 Need a Hint?</summary>
+            <p style="margin-top:0.4rem; color: #1e293b;">Check <strong>Paragraph 1</strong> for information about health risks and ingredients.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Part 4: Read Out Loud -->
+      <section class="lesson-section">
+        <h3>4. Read Out Loud</h3>
+        <p style="color: #475569; margin-bottom: 0.8rem;">Listen to the article audio, then press record to read the text out loud to practice your pronunciation.</p>
+        <button id="recordBtn" class="audio-btn" onclick="toggleRecording()">🎤 Start Recording</button>
+      </section>
+
+      <!-- Part 5: In Your Own Words -->
+      <section class="lesson-section">
+        <h3>5. In Your Own Words</h3>
+        <p style="color: #475569;">Type in your own words what this article is about (2–3 sentences):</p>
+        <textarea rows="3" placeholder="Type your summary here..."></textarea>
+      </section>
+
+      <!-- Part 6: Free Discussion -->
+      <section class="lesson-section" style="border-bottom: none;">
+        <h3>6. Free Discussion</h3>
+        <p><strong>Discussion Question:</strong> How would you handle a situation where a guest demands a meal option that is currently out of stock in the kitchen?</p>
+        <textarea rows="4" placeholder="Share your perspective to practice your speaking/writing..."></textarea>
+      </section>
+
+    </article>
+  </main>
+
+  <script>
+    function playAudio(file) { new Audio(file).play().catch(() => {}); }
+    let mediaRecorder, chunks = [];
+    async function toggleRecording() {
+      const btn = document.getElementById('recordBtn');
+      if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = e => chunks.push(e.data);
+        mediaRecorder.onstop = () => alert('Recording saved!');
+        mediaRecorder.start();
+        btn.textContent = '⏹️ Stop Recording';
+        btn.style.background = '#dc2626';
+      } else {
+        mediaRecorder.stop();
+        btn.textContent = '🎤 Start Recording';
+        btn.style.background = '#ff6500';
+      }
+    }
+  </script>
+</body>
+</html>
