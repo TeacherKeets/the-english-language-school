@@ -1,58 +1,109 @@
 {
   "adults": [
     {
-      "title": "Daily English Practice",
-      "category": "General English",
-      "date": "2026-09-06",
-      "description": "Improve your vocabulary and everyday conversational skills.",
+      "id": "biz-101",
+      "title": "Business: Pitching Ideas in Meetings",
+      "category": "Business English",
+      "date": "2026-09-07",
+      "description": "Master key phrases to present proposals confidently and handle professional Q&A.",
       "image": "https://picsum.photos/400/250?random=1",
-      "link": "adult-lesson-1.html"
+      "link": "adults/business/lesson-1.html"
     },
     {
-      "title": "Business Communication",
-      "category": "Professional",
-      "date": "2026-09-05",
-      "description": "Learn key phrases for workplace emails, meetings, and presentations.",
+      "id": "hist-101",
+      "title": "History: The Industrial Revolution",
+      "category": "History",
+      "date": "2026-09-06",
+      "description": "Explore historical vocabulary and practice past tense structures through cultural discussions.",
       "image": "https://picsum.photos/400/250?random=2",
-      "link": "adult-lesson-2.html"
+      "link": "adults/history/lesson-1.html"
     },
     {
-      "title": "Travel & Directions",
-      "category": "Vocabulary",
-      "date": "2026-09-04",
-      "description": "Essential vocabulary for traveling, ordering food, and asking for directions.",
+      "id": "ent-101",
+      "title": "Entertainment: Cinema & Modern Media",
+      "category": "Entertainment",
+      "date": "2026-09-05",
+      "description": "Learn descriptive adjectives and idioms used to discuss movies, music, and pop culture.",
       "image": "https://picsum.photos/400/250?random=3",
-      "link": "adult-lesson-3.html"
+      "link": "adults/entertainment/lesson-1.html"
+    },
+    {
+      "id": "life-101",
+      "title": "Life: Travel & Everyday Conversations",
+      "category": "Life",
+      "date": "2026-09-04",
+      "description": "Practical vocabulary for airport check-ins, restaurant bookings, and daily interactions.",
+      "image": "https://picsum.photos/400/250?random=4",
+      "link": "adults/life/lesson-1.html"
     }
   ],
   "kids": [
     {
-      "title": "The Curious Little Bear",
+      "id": "kid-story-1",
+      "title": "The Friendly Dragon (Ages 3-6)",
+      "category": "Ages 3-6",
+      "date": "2026-09-07",
+      "description": "A fun, simple story focusing on colors, animals, and basic phonics.",
+      "image": "https://picsum.photos/400/250?random=5",
+      "link": "kids/ages-3-6/story-1.html"
+    },
+    {
+      "id": "kid-story-2",
+      "title": "The Mystery of Treehouse Island (Ages 7-10)",
+      "category": "Ages 7-10",
       "date": "2026-09-06",
-      "description": "An audio-first story for beginners with fun multiple-choice questions.",
-      "image": "https://picsum.photos/id/1025/400/250",
-      "link": "kids-lesson-1.html"
+      "description": "An interactive reading adventure with vocabulary checks and reading comprehension.",
+      "image": "https://picsum.photos/400/250?random=6",
+      "link": "kids/ages-7-10/story-1.html"
     },
     {
-      "title": "The Magic Forest Adventure",
+      "id": "kid-story-3",
+      "title": "Space Explorers Journal (Ages 11-14)",
+      "category": "Ages 11-14",
       "date": "2026-09-05",
-      "description": "Follow along with simple words, interactive sound effects, and games.",
-      "image": "https://picsum.photos/id/1043/400/250",
-      "link": "kids-lesson-2.html"
+      "description": "Young adult fiction designed to expand conversational fluency and critical thinking.",
+      "image": "https://picsum.photos/400/250?random=7",
+      "link": "kids/ages-11-14/story-1.html"
+    }
+  ],
+  "conversation": [
+    {
+      "id": "chat-adult-1",
+      "title": "Adult Free Conversation: Daily Routine & Future Goals",
+      "category": "Free Conversation",
+      "date": "2026-09-07",
+      "description": "Open-ended discussion prompts designed for guided AI dialogue practice.",
+      "image": "https://picsum.photos/400/250?random=8",
+      "link": "conversation/adult-topics/lesson-1.html"
     },
     {
-      "title": "Sunny Day at the Zoo",
-      "date": "2026-09-04",
-      "description": "Learn animal names and colors in this fun interactive bedtime story.",
-      "image": "https://picsum.photos/id/1074/400/250",
-      "link": "kids-lesson-3.html"
+      "id": "chat-kids-1",
+      "title": "Kids Free Conversation: Favorite Hobbies & Pets",
+      "category": "Free Conversation",
+      "date": "2026-09-07",
+      "description": "Interactive roleplay and speaking prompts for younger learners.",
+      "image": "https://picsum.photos/400/250?random=9",
+      "link": "conversation/kids-topics/lesson-1.html"
+    }
+  ],
+  "ielts": [
+    {
+      "id": "ielts-speak-1",
+      "title": "IELTS Speaking Part 2: Describing a Memorable Experience",
+      "category": "IELTS Prep",
+      "date": "2026-09-07",
+      "description": "Learn card planning strategies, high-scoring vocabulary, and fluency drills.",
+      "image": "https://picsum.photos/400/250?random=10",
+      "link": "ielts/speaking/lesson-1.html"
     },
     {
-      "title": "Under the Sea Exploration",
-      "date": "2026-09-03",
-      "description": "Discover friendly sea creatures and learn basic underwater vocabulary.",
-      "image": "https://picsum.photos/id/1069/400/250",
-      "link": "kids-lesson-4.html"
+      "id": "ielts-write-1",
+      "title": "IELTS Writing Task 2: Opinion Essay Structure",
+      "category": "IELTS Prep",
+      "date": "2026-09-06",
+      "description": "Step-by-step essay template with linking phrases and sample Band 8 answers.",
+      "image": "https://picsum.photos/400/250?random=11",
+      "link": "ielts/writing/lesson-1.html"
     }
   ]
 }
