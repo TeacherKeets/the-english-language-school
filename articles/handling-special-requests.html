@@ -60,6 +60,8 @@
     details.hint-box { margin-top: 0.5rem; background: #f1f5f9; padding: 0.6rem; border-radius: 6px; font-size: 0.9rem; }
     details.hint-box summary { cursor: pointer; font-weight: 600; color: #475569; }
     textarea, input[type="text"] { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; margin-top: 0.5rem; }
+    .article-box { background: #f8fafc; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1rem; line-height: 1.8; color: #334155; }
+    .q-block { margin-bottom: 1.2rem; }
   </style>
 </head>
 <body>
@@ -81,82 +83,208 @@
         </div>
       </div>
 
-      <!-- Part 1: Words & Phrases -->
+      <!-- 1. WORDS & PHRASES (6 TERMS) -->
       <section class="lesson-section">
         <h3>1. Words & Phrases</h3>
+
         <div class="vocab-card">
           <div class="vocab-word">
-            <span>Complimentary</span>
-            <span class="badge" style="font-size:0.7rem;">Adjective</span>
-            <button class="audio-btn" onclick="playAudio('complimentary-word.mp3')">🔊 Listen</button>
+            <span>1. Accommodate</span>
+            <span class="badge" style="font-size:0.7rem;">Verb</span>
+            <button class="audio-btn" onclick="speakText('Accommodate')">🔊 Listen</button>
           </div>
-          <p><strong>Meaning:</strong> Provided for free as a courtesy or service.</p>
-          <p style="margin-top: 0.4rem;">
-            <em>"We offer complimentary breakfast for all guests in the main dining hall."</em>
-            <button class="audio-btn" onclick="playAudio('complimentary-sentence.mp3')" style="font-size:0.75rem; padding: 0.2rem 0.6rem;">🔊 Sentence Audio</button>
-          </p>
+          <p><strong>Meaning:</strong> To provide fit or suitable space and services for someone's specific needs.</p>
+          <p style="margin-top:0.3rem;"><em>"We always try our best to accommodate guests who have strict food preferences."</em> <button class="audio-btn" onclick="speakText('We always try our best to accommodate guests who have strict food preferences.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>2. Dietary Restriction</span>
+            <span class="badge" style="font-size:0.7rem;">Noun Phrase</span>
+            <button class="audio-btn" onclick="speakText('Dietary Restriction')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> A limitation on what a person can eat due to health, allergy, or religion.</p>
+          <p style="margin-top:0.3rem;"><em>"Please inform your server immediately if you have any severe dietary restrictions."</em> <button class="audio-btn" onclick="speakText('Please inform your server immediately if you have any severe dietary restrictions.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>3. Front-of-house</span>
+            <span class="badge" style="font-size:0.7rem;">Adjective / Noun</span>
+            <button class="audio-btn" onclick="speakText('Front-of-house')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> The business areas seen by customers, such as dining rooms or reception desks.</p>
+          <p style="margin-top:0.3rem;"><em>"Front-of-house staff should remain calm when taking complex food orders."</em> <button class="audio-btn" onclick="speakText('Front-of-house staff should remain calm when taking complex food orders.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>4. Cross-contamination</span>
+            <span class="badge" style="font-size:0.7rem;">Noun</span>
+            <button class="audio-btn" onclick="speakText('Cross-contamination')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> The process by which bacteria or allergens are unintentionally transferred from one food item to another.</p>
+          <p style="margin-top:0.3rem;"><em>"Kitchen staff use separate cutting boards to avoid dangerous cross-contamination."</em> <button class="audio-btn" onclick="speakText('Kitchen staff use separate cutting boards to avoid dangerous cross-contamination.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>5. Complimentary</span>
+            <span class="badge" style="font-size:0.7rem;">Adjective</span>
+            <button class="audio-btn" onclick="speakText('Complimentary')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> Given for free as a courtesy or polite token of service.</p>
+          <p style="margin-top:0.3rem;"><em>"The manager offered a complimentary dessert to make up for the kitchen delay."</em> <button class="audio-btn" onclick="speakText('The manager offered a complimentary dessert to make up for the kitchen delay.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-word">
+            <span>6. Substitute</span>
+            <span class="badge" style="font-size:0.7rem;">Verb / Noun</span>
+            <button class="audio-btn" onclick="speakText('Substitute')">🔊 Listen</button>
+          </div>
+          <p><strong>Meaning:</strong> To use something new in place of something else.</p>
+          <p style="margin-top:0.3rem;"><em>"Can we substitute almond milk for dairy milk in this iced coffee?"</em> <button class="audio-btn" onclick="speakText('Can we substitute almond milk for dairy milk in this iced coffee?')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
         </div>
       </section>
 
-      <!-- Part 2: The Article -->
+      <!-- 2. THE ARTICLE (125 WORDS) -->
       <section class="lesson-section">
-        <h3>2. The Article <button class="audio-btn" onclick="playAudio('article-full.mp3')">🎧 Listen to Article</button></h3>
-        <div style="line-height: 1.8; color: #334155;">
-          <p id="p1"><strong>Paragraph 1:</strong> In modern hospitality, accommodating guest food allergies and dietary restrictions is critical. Front-of-house staff must accurately communicate ingredient details between the guest and the kitchen to avoid health risks.</p>
-          <p id="p2" style="margin-top: 0.8rem;"><strong>Paragraph 2:</strong> When a request cannot be met immediately, offering a complimentary alternative demonstrates high-quality service and preserves customer loyalty.</p>
+        <h3>2. The Article <button class="audio-btn" onclick="speakArticle()">🎧 Listen to Article</button></h3>
+        <div class="article-box">
+          <p id="p1"><strong>Paragraph 1:</strong> In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. Failing to pass along vital allergy information can result in severe health risks or cross-contamination.</p>
+          <p id="p2" style="margin-top: 0.8rem;"><strong>Paragraph 2:</strong> Flexibility is another essential quality for high-performing restaurant and hotel teams. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request.</p>
+          <p id="p3" style="margin-top: 0.8rem;"><strong>Paragraph 3:</strong> Finally, if an order mistake takes place, providing a prompt apology along with a complimentary dish or drink demonstrates exceptional customer care and preserves guest loyalty.</p>
         </div>
       </section>
 
-      <!-- Part 3: Answer the Questions -->
+      <!-- 3. COMPREHENSION QUESTIONS (4 QUESTIONS) -->
       <section class="lesson-section">
         <h3>3. Answer the Questions</h3>
-        <div>
-          <p><strong>Q1: Why is communication between the front-of-house staff and kitchen essential?</strong></p>
-          <input type="text" placeholder="Type your answer here...">
+
+        <div class="q-block">
+          <p><strong>Q1: Why must front-of-house staff carefully relay ingredient details to the kitchen?</strong></p>
+          <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
           <details class="hint-box">
             <summary>💡 Need a Hint?</summary>
-            <p style="margin-top:0.4rem; color: #1e293b;">Check <strong>Paragraph 1</strong> for information about health risks and ingredients.</p>
+            <p style="margin-top:0.3rem;">Check <strong>Paragraph 1</strong> for information on cross-contamination and health risks.</p>
+          </details>
+        </div>
+
+        <div class="q-block">
+          <p><strong>Q2: What should staff do when a requested ingredient is unavailable?</strong></p>
+          <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <details class="hint-box">
+            <summary>💡 Need a Hint?</summary>
+            <p style="margin-top:0.3rem;">Look at <strong>Paragraph 2</strong> regarding proactive service and substitutes.</p>
+          </details>
+        </div>
+
+        <div class="q-block">
+          <p><strong>Q3: How can restaurant teams restore guest loyalty after making a kitchen error?</strong></p>
+          <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <details class="hint-box">
+            <summary>💡 Need a Hint?</summary>
+            <p style="margin-top:0.3rem;">Read <strong>Paragraph 3</strong> about apologies and complimentary items.</p>
+          </details>
+        </div>
+
+        <div class="q-block">
+          <p><strong>Q4: What does the article state is an essential quality for high-performing hospitality teams?</strong></p>
+          <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <details class="hint-box">
+            <summary>💡 Need a Hint?</summary>
+            <p style="margin-top:0.3rem;">Check the beginning of <strong>Paragraph 2</strong>.</p>
           </details>
         </div>
       </section>
 
-      <!-- Part 4: Read Out Loud -->
+      <!-- 4. READ OUT LOUD -->
       <section class="lesson-section">
         <h3>4. Read Out Loud</h3>
-        <p style="color: #475569; margin-bottom: 0.8rem;">Listen to the article audio, then press record to read the text out loud to practice your pronunciation.</p>
+        <p style="color: #475569; margin-bottom: 0.8rem;">Read the passage out loud below while recording to practice your pronunciation, pace, and intonation.</p>
+        
+        <div class="article-box" style="background: #fff; border-left: 4px solid #ff6500;">
+          <p>In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request.</p>
+        </div>
+
         <button id="recordBtn" class="audio-btn" onclick="toggleRecording()">🎤 Start Recording</button>
       </section>
 
-      <!-- Part 5: In Your Own Words -->
+      <!-- 5. IN YOUR OWN WORDS -->
       <section class="lesson-section">
         <h3>5. In Your Own Words</h3>
-        <p style="color: #475569;">Type in your own words what this article is about (2–3 sentences):</p>
+        <p style="color: #475569;">Summarize the main ideas of this lesson in 2–3 sentences:</p>
         <textarea rows="3" placeholder="Type your summary here..."></textarea>
       </section>
 
-      <!-- Part 6: Free Discussion -->
+      <!-- 6. FREE DISCUSSION (5 QUESTIONS) -->
       <section class="lesson-section" style="border-bottom: none;">
         <h3>6. Free Discussion</h3>
-        <p><strong>Discussion Question:</strong> How would you handle a situation where a guest demands a meal option that is currently out of stock in the kitchen?</p>
-        <textarea rows="4" placeholder="Share your perspective to practice your speaking/writing..."></textarea>
+        <p style="margin-bottom:1rem; color:#475569;">Answer or discuss these questions to practice speaking and sharing your personal perspective:</p>
+
+        <div class="q-block">
+          <p><strong>1. How would you respond if a guest claims they have a severe peanut allergy after receiving their order?</strong></p>
+          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+        </div>
+
+        <div class="q-block">
+          <p><strong>2. In your opinion, should restaurants charge extra money when guests ask to substitute special milk or gluten-free bread? Why or why not?</strong></p>
+          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+        </div>
+
+        <div class="q-block">
+          <p><strong>3. Have you ever experienced poor customer service at a restaurant or hotel? What went wrong and how could it be fixed?</strong></p>
+          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+        </div>
+
+        <div class="q-block">
+          <p><strong>4. What steps can kitchen staff take to ensure zero cross-contamination during a busy service shift?</strong></p>
+          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+        </div>
+
+        <div class="q-block">
+          <p><strong>5. Do you think offering complimentary items is always the best way to handle guest complaints? What other methods work well?</strong></p>
+          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+        </div>
       </section>
 
     </article>
   </main>
 
   <script>
-    function playAudio(file) { new Audio(file).play().catch(() => {}); }
+    // Native Browser Text-To-Speech
+    function speakText(text) {
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function speakArticle() {
+      const p1 = document.getElementById('p1').innerText;
+      const p2 = document.getElementById('p2').innerText;
+      const p3 = document.getElementById('p3').innerText;
+      speakText(`${p1} ${p2} ${p3}`);
+    }
+
+    // Audio Recorder
     let mediaRecorder, chunks = [];
     async function toggleRecording() {
       const btn = document.getElementById('recordBtn');
       if (!mediaRecorder || mediaRecorder.state === 'inactive') {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.ondataavailable = e => chunks.push(e.data);
-        mediaRecorder.onstop = () => alert('Recording saved!');
-        mediaRecorder.start();
-        btn.textContent = '⏹️ Stop Recording';
-        btn.style.background = '#dc2626';
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          mediaRecorder.ondataavailable = e => chunks.push(e.data);
+          mediaRecorder.onstop = () => alert('Recording saved!');
+          mediaRecorder.start();
+          btn.textContent = '⏹️ Stop Recording';
+          btn.style.background = '#dc2626';
+        } catch (err) {
+          alert('Microphone access required for speech recording.');
+        }
       } else {
         mediaRecorder.stop();
         btn.textContent = '🎤 Start Recording';
