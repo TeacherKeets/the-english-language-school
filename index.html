@@ -29,7 +29,7 @@
             z-index: 1000;
         }
 
-        .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; }
+        .logo { color: #ffffff; font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px; text-decoration: none; }
         .nav-links { display: flex; gap: 1rem; align-items: center; }
 
         .nav-btn {
@@ -54,7 +54,7 @@
             top: 100%;
             margin-top: 0.5rem;
             background-color: #ffffff;
-            min-width: 240px;
+            min-width: 260px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
             border-radius: 8px;
             overflow: hidden;
@@ -248,16 +248,16 @@
 <body>
 
     <header class="main-header">
-      <div class="logo">The English Language School</div>
+      <a href="index.html" class="logo">The English Language School</a>
       <nav class="nav-links">
         <a href="index.html" class="nav-btn">Home</a>
         <div class="dropdown">
-          <a href="#featured-adult" class="nav-btn">Courses ▾</a>
+          <a href="articles/index.html" class="nav-btn">Courses ▾</a>
           <div class="dropdown-content">
-            <a href="adults/index.html">Adult Modules (Business, History, Life)</a>
+            <a href="articles/index.html">Daily Articles (Business, History, Life)</a>
             <a href="kids/index.html">Kids Corner (Ages 3-14)</a>
             <a href="conversation/index.html">Free Conversation Practice</a>
-            <a href="ielts/index.html">IELTS Exam Prep</a>
+            <a href="ielts/index.html">IELTS Exam Prep Hub</a>
             <a href="#writing-zone">Daily Writing Zone</a>
             <a href="#adult-library">Full Library</a>
           </div>
@@ -273,7 +273,7 @@
 
     <main class="container">
         
-        <h2 class="section-title" id="featured-adult">Featured Adult Lessons</h2>
+        <h2 class="section-title" id="featured-adult">Featured Daily Articles</h2>
         <div class="grid" id="adult-grid"></div>
 
         <div class="kids-box" id="kids-lessons">
@@ -379,7 +379,7 @@
                                 <div class="date">${lesson.date || ''}</div>
                                 <h3>${lesson.title || ''}</h3>
                                 <p>${lesson.description || ''}</p>
-                                <a href="${lesson.link || '#'}" class="btn">Start Lesson</a>
+                                <a href="${lesson.link || '#'}" class="btn">Start Article</a>
                             </div>
                         </div>
                     `).join('');
