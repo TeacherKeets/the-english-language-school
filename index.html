@@ -54,7 +54,7 @@
             top: 100%;
             margin-top: 0.5rem;
             background-color: #ffffff;
-            min-width: 200px;
+            min-width: 240px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.25);
             border-radius: 8px;
             overflow: hidden;
@@ -178,7 +178,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        /* Interactive Writing Box */
+        /* Writing Box & Tabs */
         .writing-box {
             background: #ffffff;
             border-radius: 16px;
@@ -186,6 +186,16 @@
             margin: 3rem 0;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
         }
+        .tab-buttons { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .tab-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .tab-btn.active { background: #ff6500; color: #ffffff; border-color: #ff6500; }
         .prompt-card {
             background: #f8fafc;
             border-left: 4px solid #ff6500;
@@ -204,12 +214,16 @@
             border-radius: 8px;
             font-size: 0.95rem;
             outline: none;
-            transition: border-color 0.2s;
         }
-        .form-input:focus, .form-textarea:focus { border-color: #ff6500; }
         .form-textarea { height: 120px; resize: vertical; }
+        .word-counter { font-size: 0.8rem; color: #64748b; text-align: right; margin-top: 0.2rem; }
 
-        /* Trust & FAQ Sections */
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .testimonial-card { background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .stars { color: #ff6500; margin-bottom: 0.5rem; }
+
+        /* Teacher & FAQ */
         .teacher-section {
             background: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -217,14 +231,7 @@
             padding: 2rem;
             color: #ffffff;
             margin: 3rem 0;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
         }
-        .teacher-info { flex: 1; min-width: 280px; }
-        .teacher-info h3 { font-size: 1.5rem; color: #ff6500; margin-bottom: 0.5rem; }
-
         .faq-item {
             background: #ffffff;
             border-radius: 10px;
@@ -232,13 +239,9 @@
             margin-bottom: 1rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
-        .faq-item h4 { color: #0b192c; font-size: 1.05rem; margin-bottom: 0.4rem; }
-        .faq-item p { color: #475569; font-size: 0.9rem; }
 
         .library-list { background: #ffffff; border-radius: 14px; overflow: hidden; margin-top: 1rem; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
         .library-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
-        .library-item:last-child { border-bottom: none; }
-        .library-info { display: flex; gap: 1rem; align-items: center; }
         .library-thumb { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
     </style>
 </head>
@@ -249,11 +252,13 @@
       <nav class="nav-links">
         <a href="index.html" class="nav-btn">Home</a>
         <div class="dropdown">
-          <a href="#featured-adult" class="nav-btn">Lessons ▾</a>
+          <a href="#featured-adult" class="nav-btn">Courses ▾</a>
           <div class="dropdown-content">
-            <a href="#featured-adult">Adult Lessons</a>
-            <a href="#kids-lessons">Kids Corner</a>
-            <a href="#writing-zone">Writing Practice</a>
+            <a href="adults/index.html">Adult Modules (Business, History, Life)</a>
+            <a href="kids/index.html">Kids Corner (Ages 3-14)</a>
+            <a href="conversation/index.html">Free Conversation Practice</a>
+            <a href="ielts/index.html">IELTS Exam Prep</a>
+            <a href="#writing-zone">Daily Writing Zone</a>
             <a href="#adult-library">Full Library</a>
           </div>
         </div>
@@ -279,11 +284,16 @@
         <!-- Interactive Writing Practice Section -->
         <div class="writing-box" id="writing-zone">
             <h2 style="color: #0b192c; margin-bottom: 0.5rem;">✍️ Daily Writing Practice Zone</h2>
-            <p style="color: #64748b; margin-bottom: 1.5rem; font-size: 0.95rem;">Type your writing exercise below and submit it directly to your teacher for personalized feedback.</p>
+            <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.95rem;">Type your submission below for personalized teacher feedback.</p>
             
-            <div class="prompt-card">
-                <strong>Today's Writing Prompt:</strong>
-                <p style="font-weight: 400; margin-top: 0.3rem;">Describe your favorite weekend activity in 3 to 5 sentences. Use at least two action verbs.</p>
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchPrompt('adult')">Adult Prompt</button>
+                <button class="tab-btn" onclick="switchPrompt('kids')">Kids Prompt</button>
+            </div>
+
+            <div class="prompt-card" id="prompt-display">
+                <strong>Today's Adult Prompt:</strong>
+                <p style="font-weight: 400; margin-top: 0.3rem;">Write a 3-sentence email requesting an update on a work project.</p>
             </div>
 
             <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
@@ -292,30 +302,40 @@
                     <input type="text" name="name_email" class="form-input" placeholder="e.g., Sarah - sarah@example.com" required>
                 </div>
                 <div class="form-group">
-                    <label>Your Response (Type here)</label>
-                    <textarea name="writing_submission" class="form-textarea" placeholder="Start typing your sentences here..." required></textarea>
+                    <label>Your Response</label>
+                    <textarea name="writing_submission" id="writing-input" class="form-textarea" placeholder="Start typing here..." oninput="updateWordCount()" required></textarea>
+                    <div class="word-counter" id="word-count">Words: 0</div>
                 </div>
-                <button type="submit" class="btn" style="width: auto; padding: 0.8rem 2rem; font-size: 1rem;">Submit for Teacher Review</button>
+                <button type="submit" class="btn" style="width: auto; padding: 0.8rem 2rem; font-size: 1rem;">Submit for Feedback</button>
             </form>
+        </div>
+
+        <!-- Testimonials -->
+        <h2 class="section-title">What Our Students Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.8rem;">"The writing feedback was incredibly fast and helped me correct small grammar errors I didn't notice."</p>
+                <strong>- Maria S. (Adult Learner)</strong>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.8rem;">"My 8-year-old looks forward to the daily Kids Corner stories every afternoon after school."</p>
+                <strong>- David P. (Parent)</strong>
+            </div>
         </div>
 
         <!-- Meet Your Teacher -->
         <div class="teacher-section">
-            <div class="teacher-info">
-                <h3>Meet Your Lead Teacher</h3>
-                <p>Welcome to The English Language School! I specialize in helping both kids and adults speak and write English with confidence through fun, structured, and interactive practice. Every submission is personally reviewed so you receive actionable guidance to improve quickly.</p>
-            </div>
+            <h3 style="color: #ff6500; margin-bottom: 0.5rem;">Meet Your Teacher</h3>
+            <p>Welcome! I specialize in making English learning clear, practical, and enjoyable for both kids and adults. Every submission sent to our writing zone receives individual feedback to ensure continuous improvement.</p>
         </div>
 
         <!-- FAQs -->
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq-item">
-            <h4>How does teacher feedback work on writing practice?</h4>
-            <p>Once you submit your paragraph in the Writing Zone, a qualified teacher reviews your work and emails you personalized corrections and vocabulary tips within 24 hours.</p>
-        </div>
-        <div class="faq-item">
-            <h4>Who are these lessons designed for?</h4>
-            <p>We provide tailored paths for both adult language learners seeking practical fluency and young learners building foundational literacy.</p>
+            <h4>How does teacher feedback work?</h4>
+            <p>Once submitted, a qualified teacher reviews your sentences and sends personalized tips directly to your email within 24 hours.</p>
         </div>
 
         <h2 class="section-title" id="adult-library">Lesson Library (Past Lessons)</h2>
@@ -324,16 +344,34 @@
     </main>
 
     <script>
+        function switchPrompt(type) {
+            const display = document.getElementById('prompt-display');
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            if (type === 'adult') {
+                btns[0].classList.add('active');
+                display.innerHTML = `<strong>Today's Adult Prompt:</strong><p style="font-weight: 400; margin-top: 0.3rem;">Write a 3-sentence email requesting an update on a work project.</p>`;
+            } else {
+                btns[1].classList.add('active');
+                display.innerHTML = `<strong>Today's Kids Prompt:</strong><p style="font-weight: 400; margin-top: 0.3rem;">Describe your favorite animal using 3 descriptive words!</p>`;
+            }
+        }
+
+        function updateWordCount() {
+            const text = document.getElementById('writing-input').value.trim();
+            const count = text ? text.split(/\s+/).length : 0;
+            document.getElementById('word-count').innerText = `Words: ${count}`;
+        }
+
         async function loadLessons() {
             try {
                 const response = await fetch('lessons.json');
                 const data = await response.json();
 
-                // 1. Load Adult Lessons
                 const adultGrid = document.getElementById('adult-grid');
                 if (adultGrid && data.adults) {
-                    const featuredAdults = data.adults.slice(0, 3);
-                    adultGrid.innerHTML = featuredAdults.map(lesson => `
+                    adultGrid.innerHTML = data.adults.slice(0, 3).map(lesson => `
                         <div class="card">
                             ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
                             <div class="card-content">
@@ -347,11 +385,9 @@
                     `).join('');
                 }
 
-                // 2. Load Up To 4 Kids Lessons
                 const kidsGrid = document.getElementById('kids-grid');
                 if (kidsGrid && data.kids) {
-                    const featuredKids = data.kids.slice(0, 4);
-                    kidsGrid.innerHTML = featuredKids.map(lesson => `
+                    kidsGrid.innerHTML = data.kids.slice(0, 4).map(lesson => `
                         <div class="card">
                             ${lesson.image ? `<img src="${lesson.image}" alt="${lesson.title}" class="card-img">` : ''}
                             <div class="card-content">
@@ -364,12 +400,11 @@
                     `).join('');
                 }
 
-                // 3. Load Library List
                 const libraryContainer = document.getElementById('library-container');
                 if (libraryContainer && data.adults) {
                     libraryContainer.innerHTML = data.adults.map(lesson => `
                         <div class="library-item">
-                            <div class="library-info">
+                            <div class="library-info" style="display:flex; gap:1rem; align-items:center;">
                                 ${lesson.image ? `<img src="${lesson.image}" alt="" class="library-thumb">` : ''}
                                 <div>
                                     ${lesson.category ? `<span class="badge">${lesson.category}</span>` : ''}
@@ -381,7 +416,6 @@
                         </div>
                     `).join('');
                 }
-
             } catch (err) {
                 console.error("Error loading lesson library:", err);
             }
