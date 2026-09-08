@@ -51,6 +51,10 @@
       width: 100%; height: 320px; object-fit: cover; border-radius: 12px;
       margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+    .article-image {
+      width: 100%; height: 280px; object-fit: cover; border-radius: 10px;
+      margin: 1rem 0 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
     .lesson-section { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; }
     .lesson-section h3 { color: #0b192c; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
     .audio-btn {
@@ -63,7 +67,12 @@
     .vocab-card { background: #f8fafc; border-left: 4px solid #ff6500; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
     .vocab-word { font-size: 1.1rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem; }
     
-    /* Collapsible Tutor & Hint Boxes */
+    .tutor-note-box {
+      background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534;
+      padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.9rem; margin-bottom: 1.2rem;
+    }
+    .tutor-note-box strong { font-weight: 700; color: #14532d; }
+
     details.hint-box { margin-top: 0.5rem; background: #f1f5f9; padding: 0.6rem; border-radius: 6px; font-size: 0.9rem; }
     details.hint-box summary { cursor: pointer; font-weight: 600; color: #475569; }
     
@@ -95,12 +104,15 @@
         </div>
       </div>
 
-      <!-- LESSON HERO IMAGE -->
       <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Restaurant server taking order" class="hero-image">
 
       <!-- 1. WORDS & PHRASES -->
       <section class="lesson-section">
         <h3>1. Words & Phrases</h3>
+
+        <div class="tutor-note-box">
+          <strong>👨‍🏫 Tutor Instruction:</strong> Say the vocabulary word once and have the student repeat after you. Next, read the sample sentence and have the student repeat after you. Check for correct natural phrasing and pronunciation.
+        </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
@@ -166,6 +178,14 @@
       <!-- 2. THE ARTICLE -->
       <section class="lesson-section">
         <h3>2. The Article <button class="audio-btn" onclick="speakArticle()">🎧 Listen to Article</button></h3>
+        
+        <div class="tutor-note-box">
+          <strong>👨‍🏫 Tutor Instruction:</strong> Instruct the student: <em>"In this section, we will now listen to the article. I will start the audio now."</em>
+        </div>
+
+        <!-- IMAGE ABOVE ARTICLE -->
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="Restaurant dining experience" class="article-image">
+
         <div class="article-box">
           <p id="p1"><strong>Paragraph 1:</strong> In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. Failing to pass along vital allergy information can result in severe health risks or cross-contamination.</p>
           <p id="p2" style="margin-top: 0.8rem;"><strong>Paragraph 2:</strong> Flexibility is another essential quality for high-performing restaurant and hotel teams. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request.</p>
@@ -232,10 +252,15 @@
       <!-- 4. READ OUT LOUD (FULL ARTICLE) -->
       <section class="lesson-section">
         <h3>4. Read Out Loud</h3>
-        <p style="color: #475569; margin-bottom: 0.8rem;">Read the full passage out loud while recording to practice your pronunciation, pace, and rhythm.</p>
         
+        <div class="tutor-note-box">
+          <strong>👨‍🏫 Tutor Instruction:</strong> Ask the student to read the full article passage out loud. Monitor rhythm, word stress, and speed.
+        </div>
+
         <div class="article-box" style="background: #fff; border-left: 4px solid #ff6500;">
-          <p>In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request. Finally, if an order mistake takes place, providing a prompt apology along with a complimentary dish or drink demonstrates exceptional customer care and preserves guest loyalty.</p>
+          <p>In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. Failing to pass along vital allergy information can result in severe health risks or cross-contamination.</p>
+          <p style="margin-top:0.8rem;">Flexibility is another essential quality for high-performing restaurant and hotel teams. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request.</p>
+          <p style="margin-top:0.8rem;">Finally, if an order mistake takes place, providing a prompt apology along with a complimentary dish or drink demonstrates exceptional customer care and preserves guest loyalty.</p>
         </div>
 
         <button class="audio-btn" onclick="toggleAudioRecorder(this, 'read-audio')">🎤 Start Recording</button>
@@ -291,12 +316,19 @@
   </main>
 
   <script>
-    // Native Browser Text-To-Speech
+    // Native Browser Text-To-Speech with voice selection optimization
     function speakText(text) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
-      utterance.rate = 0.9;
+      utterance.rate = 0.85; // Slightly slower speed for maximum clarity
+      utterance.pitch = 1.0;
+
+      // Select high-quality natural voice if available in the browser
+      const voices = window.speechSynthesis.getVoices();
+      const naturalVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel')));
+      if (naturalVoice) utterance.voice = naturalVoice;
+
       window.speechSynthesis.speak(utterance);
     }
 
@@ -307,7 +339,12 @@
       speakText(`${p1} ${p2} ${p3}`);
     }
 
-    // Audio Recorder & Audio Player Generator
+    // Load voices on init
+    if (typeof speechSynthesis !== 'undefined') {
+      speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+
+    // Audio Recorder
     const activeRecorders = {};
 
     async function toggleAudioRecorder(button, containerId) {
@@ -324,7 +361,6 @@
             const blob = new Blob(chunks, { type: 'audio/webm' });
             const audioUrl = URL.createObjectURL(blob);
             
-            // Generate Playback Element
             container.innerHTML = `
               <p style="font-size:0.85rem; font-weight:700; color:#1e293b; margin-top:0.5rem;">🎧 Recorded Answer:</p>
               <audio controls src="${audioUrl}" class="playback-audio"></audio>
