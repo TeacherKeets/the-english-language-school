@@ -118,69 +118,63 @@
           <div class="vocab-word">
             <span>1. Accommodate</span>
             <span class="badge" style="font-size:0.7rem;">Verb</span>
-            <button class="audio-btn" onclick="speakText('Accommodate')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> To provide fit or suitable space and services for someone's specific needs.</p>
-          <p style="margin-top:0.3rem;"><em>"We always try our best to accommodate guests who have strict food preferences."</em> <button class="audio-btn" onclick="speakText('We always try our best to accommodate guests who have strict food preferences.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"We always try our best to accommodate guests who have strict food preferences."</em></p>
         </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
             <span>2. Dietary Restriction</span>
             <span class="badge" style="font-size:0.7rem;">Noun Phrase</span>
-            <button class="audio-btn" onclick="speakText('Dietary Restriction')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> A limitation on what a person can eat due to health, allergy, or religion.</p>
-          <p style="margin-top:0.3rem;"><em>"Please inform your server immediately if you have any severe dietary restrictions."</em> <button class="audio-btn" onclick="speakText('Please inform your server immediately if you have any severe dietary restrictions.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"Please inform your server immediately if you have any severe dietary restrictions."</em></p>
         </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
             <span>3. Front-of-house</span>
             <span class="badge" style="font-size:0.7rem;">Adjective / Noun</span>
-            <button class="audio-btn" onclick="speakText('Front-of-house')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> The business areas seen by customers, such as dining rooms or reception desks.</p>
-          <p style="margin-top:0.3rem;"><em>"Front-of-house staff should remain calm when taking complex food orders."</em> <button class="audio-btn" onclick="speakText('Front-of-house staff should remain calm when taking complex food orders.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"Front-of-house staff should remain calm when taking complex food orders."</em></p>
         </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
             <span>4. Cross-contamination</span>
             <span class="badge" style="font-size:0.7rem;">Noun</span>
-            <button class="audio-btn" onclick="speakText('Cross-contamination')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> The process by which bacteria or allergens are unintentionally transferred from one food item to another.</p>
-          <p style="margin-top:0.3rem;"><em>"Kitchen staff use separate cutting boards to avoid dangerous cross-contamination."</em> <button class="audio-btn" onclick="speakText('Kitchen staff use separate cutting boards to avoid dangerous cross-contamination.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"Kitchen staff use separate cutting boards to avoid dangerous cross-contamination."</em></p>
         </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
             <span>5. Complimentary</span>
             <span class="badge" style="font-size:0.7rem;">Adjective</span>
-            <button class="audio-btn" onclick="speakText('Complimentary')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> Given for free as a courtesy or polite token of service.</p>
-          <p style="margin-top:0.3rem;"><em>"The manager offered a complimentary dessert to make up for the kitchen delay."</em> <button class="audio-btn" onclick="speakText('The manager offered a complimentary dessert to make up for the kitchen delay.')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"The manager offered a complimentary dessert to make up for the kitchen delay."</em></p>
         </div>
 
         <div class="vocab-card">
           <div class="vocab-word">
             <span>6. Substitute</span>
             <span class="badge" style="font-size:0.7rem;">Verb / Noun</span>
-            <button class="audio-btn" onclick="speakText('Substitute')">🔊 Listen</button>
           </div>
           <p><strong>Meaning:</strong> To use something new in place of something else.</p>
-          <p style="margin-top:0.3rem;"><em>"Can we substitute almond milk for dairy milk in this iced coffee?"</em> <button class="audio-btn" onclick="speakText('Can we substitute almond milk for dairy milk in this iced coffee?')" style="font-size:0.75rem; padding:0.2rem 0.5rem;">🔊 Sentence Audio</button></p>
+          <p style="margin-top:0.3rem;"><em>"Can we substitute almond milk for dairy milk in this iced coffee?"</em></p>
         </div>
       </section>
 
       <!-- 2. THE ARTICLE -->
       <section class="lesson-section">
-        <h3>2. The Article <button class="audio-btn" onclick="speakArticle()">🎧 Listen to Article</button></h3>
+        <h3>2. The Article</h3>
         
         <div class="tutor-note-box">
-          <strong>👨‍🏫 Tutor Instruction:</strong> Instruct the student: <em>"In this section, we will now listen to the article. I will start the audio now."</em>
+          <strong>👨‍🏫 Tutor Instruction:</strong> Instruct the student: <em>"In this section, we will now listen to the article. I will read the article aloud for you now."</em>
         </div>
 
         <!-- IMAGE ABOVE ARTICLE -->
@@ -316,34 +310,6 @@
   </main>
 
   <script>
-    // Native Browser Text-To-Speech with voice selection optimization
-    function speakText(text) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.85; // Slightly slower speed for maximum clarity
-      utterance.pitch = 1.0;
-
-      // Select high-quality natural voice if available in the browser
-      const voices = window.speechSynthesis.getVoices();
-      const naturalVoice = voices.find(v => v.lang.includes('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha') || v.name.includes('Daniel')));
-      if (naturalVoice) utterance.voice = naturalVoice;
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function speakArticle() {
-      const p1 = document.getElementById('p1').innerText;
-      const p2 = document.getElementById('p2').innerText;
-      const p3 = document.getElementById('p3').innerText;
-      speakText(`${p1} ${p2} ${p3}`);
-    }
-
-    // Load voices on init
-    if (typeof speechSynthesis !== 'undefined') {
-      speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
-    }
-
     // Audio Recorder
     const activeRecorders = {};
 
