@@ -47,21 +47,33 @@
       font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.6rem;
       border-radius: 6px; text-transform: uppercase;
     }
+    .hero-image {
+      width: 100%; height: 320px; object-fit: cover; border-radius: 12px;
+      margin-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
     .lesson-section { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid #f1f5f9; }
     .lesson-section h3 { color: #0b192c; font-size: 1.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
     .audio-btn {
       background: #ff6500; color: white; border: none; padding: 0.4rem 0.8rem;
       border-radius: 20px; cursor: pointer; font-weight: 600; font-size: 0.85rem;
       display: inline-flex; align-items: center; gap: 0.3rem; transition: background 0.2s ease;
+      margin-top: 0.4rem;
     }
     .audio-btn:hover { background: #e05500; }
     .vocab-card { background: #f8fafc; border-left: 4px solid #ff6500; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
     .vocab-word { font-size: 1.1rem; font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.4rem; }
+    
+    /* Collapsible Tutor & Hint Boxes */
     details.hint-box { margin-top: 0.5rem; background: #f1f5f9; padding: 0.6rem; border-radius: 6px; font-size: 0.9rem; }
     details.hint-box summary { cursor: pointer; font-weight: 600; color: #475569; }
+    
+    details.tutor-guide { margin-top: 0.5rem; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 0.6rem; border-radius: 6px; font-size: 0.9rem; }
+    details.tutor-guide summary { cursor: pointer; font-weight: 700; color: #166534; }
+    
     textarea, input[type="text"] { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; margin-top: 0.5rem; }
     .article-box { background: #f8fafc; padding: 1.2rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1rem; line-height: 1.8; color: #334155; }
-    .q-block { margin-bottom: 1.2rem; }
+    .q-block { margin-bottom: 1.5rem; }
+    .playback-audio { margin-top: 0.5rem; width: 100%; max-width: 400px; display: block; }
   </style>
 </head>
 <body>
@@ -83,7 +95,10 @@
         </div>
       </div>
 
-      <!-- 1. WORDS & PHRASES (6 TERMS) -->
+      <!-- LESSON HERO IMAGE -->
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Restaurant server taking order" class="hero-image">
+
+      <!-- 1. WORDS & PHRASES -->
       <section class="lesson-section">
         <h3>1. Words & Phrases</h3>
 
@@ -148,7 +163,7 @@
         </div>
       </section>
 
-      <!-- 2. THE ARTICLE (125 WORDS) -->
+      <!-- 2. THE ARTICLE -->
       <section class="lesson-section">
         <h3>2. The Article <button class="audio-btn" onclick="speakArticle()">🎧 Listen to Article</button></h3>
         <div class="article-box">
@@ -158,57 +173,81 @@
         </div>
       </section>
 
-      <!-- 3. COMPREHENSION QUESTIONS (4 QUESTIONS) -->
+      <!-- 3. COMPREHENSION QUESTIONS WITH TUTOR ANSWER KEY -->
       <section class="lesson-section">
         <h3>3. Answer the Questions</h3>
 
         <div class="q-block">
           <p><strong>Q1: Why must front-of-house staff carefully relay ingredient details to the kitchen?</strong></p>
           <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <button class="audio-btn" onclick="toggleAudioRecorder(this, 'q1-audio')">🎤 Record Answer</button>
+          <div id="q1-audio"></div>
+
           <details class="hint-box">
             <summary>💡 Need a Hint?</summary>
             <p style="margin-top:0.3rem;">Check <strong>Paragraph 1</strong> for information on cross-contamination and health risks.</p>
+          </details>
+
+          <details class="tutor-guide">
+            <summary>👨‍🏫 Tutor Guide & Sample Answer</summary>
+            <p style="margin-top:0.3rem; color: #14532d;"><strong>Expected Target Concepts:</strong> Communication, health risks, avoiding cross-contamination.<br><em>"They must relay details to prevent severe health risks or cross-contamination for guests with food allergies."</em></p>
           </details>
         </div>
 
         <div class="q-block">
           <p><strong>Q2: What should staff do when a requested ingredient is unavailable?</strong></p>
           <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <button class="audio-btn" onclick="toggleAudioRecorder(this, 'q2-audio')">🎤 Record Answer</button>
+          <div id="q2-audio"></div>
+
           <details class="hint-box">
             <summary>💡 Need a Hint?</summary>
             <p style="margin-top:0.3rem;">Look at <strong>Paragraph 2</strong> regarding proactive service and substitutes.</p>
+          </details>
+
+          <details class="tutor-guide">
+            <summary>👨‍🏫 Tutor Guide & Sample Answer</summary>
+            <p style="margin-top:0.3rem; color: #14532d;"><strong>Expected Target Concepts:</strong> Proactive service, offering alternatives/substitutes.<br><em>"Staff should proactively offer suitable substitutes instead of just saying no."</em></p>
           </details>
         </div>
 
         <div class="q-block">
           <p><strong>Q3: How can restaurant teams restore guest loyalty after making a kitchen error?</strong></p>
           <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
+          <button class="audio-btn" onclick="toggleAudioRecorder(this, 'q3-audio')">🎤 Record Answer</button>
+          <div id="q3-audio"></div>
+
           <details class="hint-box">
             <summary>💡 Need a Hint?</summary>
             <p style="margin-top:0.3rem;">Read <strong>Paragraph 3</strong> about apologies and complimentary items.</p>
           </details>
-        </div>
 
-        <div class="q-block">
-          <p><strong>Q4: What does the article state is an essential quality for high-performing hospitality teams?</strong></p>
-          <textarea rows="2" placeholder="Type or prepare your answer..."></textarea>
-          <details class="hint-box">
-            <summary>💡 Need a Hint?</summary>
-            <p style="margin-top:0.3rem;">Check the beginning of <strong>Paragraph 2</strong>.</p>
+          <details class="tutor-guide">
+            <summary>👨‍🏫 Tutor Guide & Sample Answer</summary>
+            <p style="margin-top:0.3rem; color: #14532d;"><strong>Expected Target Concepts:</strong> Prompt apology, offering complimentary dishes/drinks.<br><em>"By offering a prompt apology along with a complimentary dish or drink."</em></p>
           </details>
         </div>
       </section>
 
-      <!-- 4. READ OUT LOUD -->
+      <!-- 4. READ OUT LOUD (FULL ARTICLE) -->
       <section class="lesson-section">
         <h3>4. Read Out Loud</h3>
-        <p style="color: #475569; margin-bottom: 0.8rem;">Read the passage out loud below while recording to practice your pronunciation, pace, and intonation.</p>
+        <p style="color: #475569; margin-bottom: 0.8rem;">Read the full passage out loud while recording to practice your pronunciation, pace, and rhythm.</p>
         
         <div class="article-box" style="background: #fff; border-left: 4px solid #ff6500;">
-          <p>In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request.</p>
+          <p>In modern hospitality, accommodating guest food allergies and special dietary restrictions is critical. Front-of-house staff must listen carefully to every guest and clearly communicate ingredient details to the kitchen team. When a requested ingredient is out of stock, staff should proactively offer suitable substitutes rather than simply declining the customer's request. Finally, if an order mistake takes place, providing a prompt apology along with a complimentary dish or drink demonstrates exceptional customer care and preserves guest loyalty.</p>
         </div>
 
-        <button id="recordBtn" class="audio-btn" onclick="toggleRecording()">🎤 Start Recording</button>
+        <button class="audio-btn" onclick="toggleAudioRecorder(this, 'read-audio')">🎤 Start Recording</button>
+        <div id="read-audio"></div>
+
+        <details class="tutor-guide">
+          <summary>👨‍🏫 Tutor Pronunciation & Fluency Focus</summary>
+          <ul style="margin-top:0.3rem; margin-left: 1.2rem; color: #14532d;">
+            <li>Listen for clear multi-syllable word stress: <em>ac-COM-mo-da-ting</em>, <em>com-pli-MEN-ta-ry</em>.</li>
+            <li>Ensure proper pausing at commas and sentence stops.</li>
+          </ul>
+        </details>
       </section>
 
       <!-- 5. IN YOUR OWN WORDS -->
@@ -218,7 +257,7 @@
         <textarea rows="3" placeholder="Type your summary here..."></textarea>
       </section>
 
-      <!-- 6. FREE DISCUSSION (5 QUESTIONS) -->
+      <!-- 6. FREE DISCUSSION WITH TUTOR PROMPTS -->
       <section class="lesson-section" style="border-bottom: none;">
         <h3>6. Free Discussion</h3>
         <p style="margin-bottom:1rem; color:#475569;">Answer or discuss these questions to practice speaking and sharing your personal perspective:</p>
@@ -226,26 +265,25 @@
         <div class="q-block">
           <p><strong>1. How would you respond if a guest claims they have a severe peanut allergy after receiving their order?</strong></p>
           <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+          <button class="audio-btn" onclick="toggleAudioRecorder(this, 'disc1-audio')">🎤 Record Answer</button>
+          <div id="disc1-audio"></div>
+
+          <details class="tutor-guide">
+            <summary>👨‍🏫 Tutor Discussion Prompts</summary>
+            <p style="margin-top:0.3rem; color: #14532d;">Encourage the student to use phrases like: <em>"I apologize immediately," "I will take this back to the chef,"</em> and <em>"Let me replace this for you."</em></p>
+          </details>
         </div>
 
         <div class="q-block">
           <p><strong>2. In your opinion, should restaurants charge extra money when guests ask to substitute special milk or gluten-free bread? Why or why not?</strong></p>
           <textarea rows="2" placeholder="Share your speaking response..."></textarea>
-        </div>
+          <button class="audio-btn" onclick="toggleAudioRecorder(this, 'disc2-audio')">🎤 Record Answer</button>
+          <div id="disc2-audio"></div>
 
-        <div class="q-block">
-          <p><strong>3. Have you ever experienced poor customer service at a restaurant or hotel? What went wrong and how could it be fixed?</strong></p>
-          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
-        </div>
-
-        <div class="q-block">
-          <p><strong>4. What steps can kitchen staff take to ensure zero cross-contamination during a busy service shift?</strong></p>
-          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
-        </div>
-
-        <div class="q-block">
-          <p><strong>5. Do you think offering complimentary items is always the best way to handle guest complaints? What other methods work well?</strong></p>
-          <textarea rows="2" placeholder="Share your speaking response..."></textarea>
+          <details class="tutor-guide">
+            <summary>👨‍🏫 Tutor Discussion Prompts</summary>
+            <p style="margin-top:0.3rem; color: #14532d;">Focus on persuasive language: <em>"From my perspective...", "On one hand...", "However, ingredient costs are higher..."</em></p>
+          </details>
         </div>
       </section>
 
@@ -269,26 +307,46 @@
       speakText(`${p1} ${p2} ${p3}`);
     }
 
-    // Audio Recorder
-    let mediaRecorder, chunks = [];
-    async function toggleRecording() {
-      const btn = document.getElementById('recordBtn');
-      if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+    // Audio Recorder & Audio Player Generator
+    const activeRecorders = {};
+
+    async function toggleAudioRecorder(button, containerId) {
+      const container = document.getElementById(containerId);
+
+      if (!activeRecorders[containerId]) {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          mediaRecorder = new MediaRecorder(stream);
+          const mediaRecorder = new MediaRecorder(stream);
+          const chunks = [];
+
           mediaRecorder.ondataavailable = e => chunks.push(e.data);
-          mediaRecorder.onstop = () => alert('Recording saved!');
+          mediaRecorder.onstop = () => {
+            const blob = new Blob(chunks, { type: 'audio/webm' });
+            const audioUrl = URL.createObjectURL(blob);
+            
+            // Generate Playback Element
+            container.innerHTML = `
+              <p style="font-size:0.85rem; font-weight:700; color:#1e293b; margin-top:0.5rem;">🎧 Recorded Answer:</p>
+              <audio controls src="${audioUrl}" class="playback-audio"></audio>
+            `;
+          };
+
           mediaRecorder.start();
-          btn.textContent = '⏹️ Stop Recording';
-          btn.style.background = '#dc2626';
+          activeRecorders[containerId] = { recorder: mediaRecorder, stream: stream };
+          button.textContent = '⏹️ Stop Recording';
+          button.style.background = '#dc2626';
+
         } catch (err) {
-          alert('Microphone access required for speech recording.');
+          alert('Microphone access is required to record audio.');
         }
       } else {
-        mediaRecorder.stop();
-        btn.textContent = '🎤 Start Recording';
-        btn.style.background = '#ff6500';
+        const { recorder, stream } = activeRecorders[containerId];
+        recorder.stop();
+        stream.getTracks().forEach(track => track.stop());
+        delete activeRecorders[containerId];
+
+        button.textContent = '🎤 Re-record Answer';
+        button.style.background = '#ff6500';
       }
     }
   </script>
